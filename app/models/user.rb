@@ -34,4 +34,19 @@
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
+
+  validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
+  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+
+  validates :email, uniqueness: true
+
+  def self.get_current_users
+    config = sorcery_config
+
+    where("#{config.last_activity_at_attribute_name} IS NOT NULL") \
+    .where("#{config.last_logout_at_attribute_name} IS NULL
+    OR #{config.last_activity_at_attribute_name} > #{config.last_logout_at_attribute_name}") \
+    .where("#{config.last_activity_at_attribute_name} > ? ", config.activity_timeout.seconds.ago.utc.to_s(:db))
+  end
 end

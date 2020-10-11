@@ -10,22 +10,17 @@
   </head>
 
   <body>
-    <nav id='menu'>
-      <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
-      <ul>
-        <li><a href='http://'>Home</a></li>
-        <li><a class='dropdown-arrow' href='http://'>Products</a>
-          <ul class='sub-menus'>
-            <li><a href='http://'>Products Sub Menu 1</a></li>
-            <li><a href='http://'>Products Sub Menu 2</a></li>
-            <li><a href='http://'>Products Sub Menu 3</a></li>
-            <li><a href='http://'>Products Sub Menu 4</a></li>
-          </ul>
-        </li>
-        <li><a href='http://'>About</a></li>
-        <li><a href='http://'>Contact Us</a></li>
-      </ul>
-    </nav>
-    <%= yield %>
+    <%= render "layouts/menu" %>
+    <div>
+      <p id="notice"><%= flash[:notice] %></p>
+      <p id="alert"><%= flash[:alert] %></p>
+    </div>
+
+    <% if current_user.admin? %>
+      <div id="current_users"> Currently active users: <%= current_users_list %></div>
+    <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
