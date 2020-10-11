@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Doprava</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Doprava" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head) %>
   </head>
 
   <body>
     <%= render "layouts/menu" %>
-    <div>
-      <p id="notice"><%= flash[:notice] %></p>
-      <p id="alert"><%= flash[:alert] %></p>
-    </div>
+    <div id="container">
+      <% if current_user&.admin? %>
+        <div id="current_users"> Currently active users: <%= current_users_list %></div>
+      <% end %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= content_tag :h1, yield(:title) if show_title? %>
 
-    <% if current_user.admin? %>
-      <div id="current_users"> Currently active users: <%= current_users_list %></div>
-    <% end %>
-    <div class="container">
-      <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

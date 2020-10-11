@@ -49,4 +49,12 @@ class User < ApplicationRecord
     OR #{config.last_activity_at_attribute_name} > #{config.last_logout_at_attribute_name}") \
     .where("#{config.last_activity_at_attribute_name} > ? ", config.activity_timeout.seconds.ago.utc.to_s(:db))
   end
+
+  def manager_or_admin?
+    manager? or admin?
+  end
+
+  def driver_or_manager_or_admin?
+    driver? or manager? or admin?
+  end
 end
