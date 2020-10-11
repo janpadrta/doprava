@@ -7,9 +7,9 @@
         <li><a class='dropdown-arrow' href='http://'>Admin menu</a>
           <ul class='sub-menus'>
             <li><%= link_to 'Users', users_path %></li>
-            <li><a href='http://'>Products Sub Menu 2</a></li>
-            <li><a href='http://'>Products Sub Menu 3</a></li>
-            <li><a href='http://'>Products Sub Menu 4</a></li>
+            <li><a href='http://'>Sub Menu 2</a></li>
+            <li><a href='http://'>Sub Menu 3</a></li>
+            <li><a href='http://'>Sub Menu 4</a></li>
           </ul>
         </li>
       <% end %>
@@ -17,7 +17,7 @@
         <li>
           <a class='dropdown-arrow'>Manager</a>
           <ul class="sub-menus">
-            <li>man prvni</li>
+            <li><%= link_to 'Customers', customers_path %></li>
           </ul>
         </li>
       <% end %>
