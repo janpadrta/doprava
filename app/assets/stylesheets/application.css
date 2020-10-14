@@ -98,3 +98,16 @@ a {
     clear:both;
     padding-top:20px;
 }
+
+textarea {
+    border-color: #eee;
+    border-width: 1px;
+}
+label, textarea, input {
+    width: 350px;
+    display: block;
+}
+input {
+    border-style: solid;
+    border-width: 1px;
+}

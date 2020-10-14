@@ -4,7 +4,7 @@
     <% if current_user %>
       <li><%= link_to 'Home', static_home_path %></li>
       <% if current_user.admin? %>
-        <li><a class='dropdown-arrow' href='http://'>Admin menu</a>
+        <li><a class='dropdown-arrow' href='http://'>Admin</a>
           <ul class='sub-menus'>
             <li><%= link_to 'Users', users_path %></li>
             <li><a href='http://'>Sub Menu 2</a></li>
