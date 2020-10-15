@@ -17,5 +17,8 @@ module Doprava
     # the framework and any gems in your application.
 
     config.active_record.timestamped_migrations = false
+
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+    config.i18n.default_locale = :cs
   end
 end

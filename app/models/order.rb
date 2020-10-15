@@ -3,9 +3,11 @@
 # Table name: orders
 #
 #  id               :bigint           not null, primary key
+#  currency         :text
 #  datum            :date
 #  distance         :decimal(10, 2)
 #  fix_price        :boolean
+#  label            :text
 #  load_capacity    :decimal(10, 3)
 #  load_description :string
 #  load_type        :string
@@ -34,4 +36,12 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :origin, foreign_key: :origin_id, class_name: 'Customer'
   belongs_to :destination, foreign_key: :destination_id, class_name: 'Customer'
+
+  def full_price
+    if fix_price?
+      price
+    else
+      price_per_km * distance
+    end
+  end
 end

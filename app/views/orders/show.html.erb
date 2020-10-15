@@ -1,68 +1,83 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Datum:</strong>
-  <%= @order.datum %>
+  <strong><%= t 'activerecord.attributes.order.datum' %>:</strong>
+  <%= format_date @order.datum %>
 </p>
 
 <p>
-  <strong>Load type:</strong>
+  <strong><%= t 'activerecord.attributes.order.label' %>:</strong>
+  <%= @order.label %>
+</p>
+
+<p>
+  <strong><%= t 'activerecord.attributes.order.load_type' %>:</strong>
   <%= @order.load_type %>
 </p>
 
 <p>
-  <strong>Load description:</strong>
+  <strong><%= t 'activerecord.attributes.order.load_description' %>:</strong>
   <%= @order.load_description %>
 </p>
 
 <p>
-  <strong>Load capacity:</strong>
+  <strong><%= t 'activerecord.attributes.order.load_capacity' %>:</strong>
   <%= @order.load_capacity %>
 </p>
 
 <p>
-  <strong>Load volume:</strong>
+  <strong><%= t 'activerecord.attributes.order.load_volume' %>:</strong>
   <%= @order.load_volume %>
 </p>
 
 <p>
-  <strong>Origin:</strong>
-  <%= @order.origin_id %>
+  <strong><%= t 'activerecord.attributes.order.origin_id' %>:</strong>
+  <%= @order.origin.name %>
 </p>
 
 <p>
-  <strong>Destination:</strong>
-  <%= @order.destination_id %>
+  <strong><%= t 'activerecord.attributes.order.destination_id' %>:</strong>
+  <%= @order.destination.name %>
 </p>
 
 <p>
-  <strong>Distance:</strong>
+  <strong><%= t 'activerecord.attributes.order.distance' %>:</strong>
   <%= @order.distance %>
 </p>
 
 <p>
-  <strong>Fix price:</strong>
+  <strong><%= t 'activerecord.attributes.order.fix_price' %>:</strong>
   <%= @order.fix_price %>
 </p>
 
 <p>
-  <strong>Price per km:</strong>
+  <strong><%= t 'activerecord.attributes.order.price_per_km' %>:</strong>
   <%= @order.price_per_km %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong><%= t 'activerecord.attributes.order.price' %>:</strong>
   <%= @order.price %>
 </p>
 
 <p>
-  <strong>Customer:</strong>
-  <%= @order.customer_id %>
+  <strong><%= t 'activerecord.attributes.order.full_price' %>:</strong>
+  <%= @order.full_price %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @order.user_id %>
+  <strong><%= t 'activerecord.attributes.order.currency' %>:</strong>
+  <%= @order.currency %>
+</p>
+
+<p>
+  <strong><%= t 'activerecord.attributes.order.customer_id' %>:</strong>
+  <%= @order.customer.name %>
+</p>
+
+<p>
+  <strong><%= t 'activerecord.attributes.order.user_id' %>:</strong>
+  <%= @order.user.name %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

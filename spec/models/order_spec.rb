@@ -3,9 +3,11 @@
 # Table name: orders
 #
 #  id               :bigint           not null, primary key
+#  currency         :text
 #  datum            :date
 #  distance         :decimal(10, 2)
 #  fix_price        :boolean
+#  label            :text
 #  load_capacity    :decimal(10, 3)
 #  load_description :string
 #  load_type        :string

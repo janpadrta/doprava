@@ -2,11 +2,11 @@
   <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
   <ul>
     <% if current_user %>
-      <li><%= link_to 'Home', static_home_path %></li>
+      <li><%= link_to 'Domů', static_home_path %></li>
       <% if current_user.admin? %>
         <li><a class='dropdown-arrow' href='http://'>Admin</a>
           <ul class='sub-menus'>
-            <li><%= link_to 'Users', users_path %></li>
+            <li><%= link_to 'Uživatelé', users_path %></li>
             <li><a href='http://'>Sub Menu 2</a></li>
             <li><a href='http://'>Sub Menu 3</a></li>
             <li><a href='http://'>Sub Menu 4</a></li>
@@ -15,27 +15,30 @@
       <% end %>
       <% if current_user.manager_or_admin? %>
         <li>
-          <a class='dropdown-arrow'>Manager</a>
+          <a class='dropdown-arrow'>Manažer</a>
           <ul class="sub-menus">
-            <li><%= link_to 'Customers', customers_path %></li>
-            <li><%= link_to 'Orders', orders_path %></li>
+            <li><%= link_to 'Zákazníci', customers_path %></li>
+            <li><%= link_to 'Zakázky', orders_path %></li>
           </ul>
         </li>
       <% end %>
       <% if current_user.driver_or_manager_or_admin? %>
         <li>
-          <a class='dropdown-arrow'>Driver</a>
+          <a class='dropdown-arrow'>Řidič</a>
           <ul class="sub-menus">
             <li>dri prvni</li>
           </ul>
         </li>
       <% end %>
-      <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-      <li><%= link_to "Logout", :logout, method: :post %></li>
+      <li><%= link_to "Uprav profil", edit_user_path(current_user.id) %></li>
+      <li><%= link_to "Odhlásit", :logout, method: :post %></li>
     <% else %>
-      <li><%= link_to "Login", :login %></li>
+      <li><%= link_to "Přihlásit", :login %></li>
     <% end %>
-    <li><%= link_to 'About', static_about_path %></li>
-    <li><%= link_to 'Contact Us', static_contact_path %></li>
+    <li><%= link_to 'O nás', static_about_path %></li>
+    <li><%= link_to 'Kontakt', static_contact_path %></li>
+    <% if current_user&.admin? %>
+      <div id="current_users"> Aktivní uživatelé: <%= current_users_list %></div>
+    <% end %>
   </ul>
 </nav>

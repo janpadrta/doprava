@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :orders
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #
   get 'static/home'
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
   get 'static/contact'
 
   resources :customers
+  resources :orders
   resources :users
 
   get 'login' => 'user_sessions#new', as: :login

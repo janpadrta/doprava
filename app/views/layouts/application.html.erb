@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Doprava" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "DOPAJA" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,9 +13,6 @@
   <body>
     <%= render "layouts/menu" %>
     <div id="container">
-      <% if current_user&.admin? %>
-        <div id="current_users"> Currently active users: <%= current_users_list %></div>
-      <% end %>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
