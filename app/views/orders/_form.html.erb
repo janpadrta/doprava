@@ -1,0 +1,77 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :datum %>
+    <%= form.date_select :datum %>
+  </div>
+
+  <div class="field">
+    <%= form.label :load_type %>
+    <%= form.text_field :load_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :load_description %>
+    <%= form.text_field :load_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :load_capacity %>
+    <%= form.text_field :load_capacity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :load_volume %>
+    <%= form.text_field :load_volume %>
+  </div>
+
+  <div class="field">
+    <%= form.label :origin_id %>
+    <%= form.select(:origin_id, options_from_collection_for_select(Customer.all, 'id', 'name') ) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :destination_id %>
+    <%= form.select(:destination_id, options_from_collection_for_select(Customer.all, 'id', 'name') ) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distance %>
+    <%= form.text_field :distance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fix_price %>
+    <%= form.check_box :fix_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_per_km %>
+    <%= form.text_field :price_per_km %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.select(:customer_id, options_from_collection_for_select(Customer.all, 'id', 'name') ) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 6) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "customers", force: :cascade do |t|
     t.string "name", null: false
@@ -21,6 +24,26 @@ ActiveRecord::Schema.define(version: 5) do
     t.string "dic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.date "datum"
+    t.string "load_type"
+    t.string "load_description"
+    t.decimal "load_capacity", precision: 10, scale: 3
+    t.decimal "load_volume", precision: 10, scale: 3
+    t.integer "origin_id"
+    t.integer "destination_id"
+    t.decimal "distance", precision: 10, scale: 2
+    t.boolean "fix_price"
+    t.decimal "price_per_km", precision: 10, scale: 3
+    t.decimal "price", precision: 10, scale: 3
+    t.integer "customer_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,4 +74,6 @@ ActiveRecord::Schema.define(version: 5) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token"
   end
 
+  add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "users"
 end

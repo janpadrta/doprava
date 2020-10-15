@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datum:</strong>
+  <%= @order.datum %>
+</p>
+
+<p>
+  <strong>Load type:</strong>
+  <%= @order.load_type %>
+</p>
+
+<p>
+  <strong>Load description:</strong>
+  <%= @order.load_description %>
+</p>
+
+<p>
+  <strong>Load capacity:</strong>
+  <%= @order.load_capacity %>
+</p>
+
+<p>
+  <strong>Load volume:</strong>
+  <%= @order.load_volume %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @order.origin_id %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @order.destination_id %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @order.distance %>
+</p>
+
+<p>
+  <strong>Fix price:</strong>
+  <%= @order.fix_price %>
+</p>
+
+<p>
+  <strong>Price per km:</strong>
+  <%= @order.price_per_km %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @order.price %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @order.customer_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @order.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

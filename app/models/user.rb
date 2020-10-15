@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                                  :integer          not null, primary key
+#  id                                  :bigint           not null, primary key
 #  access_count_to_reset_password_page :integer          default(0)
 #  admin                               :boolean
 #  crypted_password                    :string
@@ -34,6 +34,8 @@
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
+
+  has_many :orders
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

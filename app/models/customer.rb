@@ -2,7 +2,7 @@
 #
 # Table name: customers
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  address    :string
 #  dic        :string
 #  email      :string
@@ -13,4 +13,6 @@
 #  updated_at :datetime         not null
 #
 class Customer < ApplicationRecord
+  has_many :orders
+
 end
