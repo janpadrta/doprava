@@ -1,14 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<div class="grid-container">
+  <div class="leftup">
+    <p style="font-size: large">
+      <strong><%= t 'activerecord.attributes.order.label' %>:</strong>
+      <%= @order.label %>
+    </p>
+  </div>
+  <div class="rightup"></div>
+  <div class="leftmiddle"></div>
+  <div class="rightmiddle"></div>
+  <div class="leftdown"></div>
+  <div class="rightdown"></div>
+</div>
 <p>
   <strong><%= t 'activerecord.attributes.order.datum' %>:</strong>
   <%= format_date @order.datum %>
 </p>
 
-<p>
-  <strong><%= t 'activerecord.attributes.order.label' %>:</strong>
-  <%= @order.label %>
-</p>
+
 
 <p>
   <strong><%= t 'activerecord.attributes.order.load_type' %>:</strong>
@@ -62,7 +72,7 @@
 
 <p>
   <strong><%= t 'activerecord.attributes.order.full_price' %>:</strong>
-  <%= @order.full_price %>
+  <%= format_currency @order.full_price, @order.currency %>
 </p>
 
 <p>
@@ -81,4 +91,4 @@
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Přehled zakázek', orders_path %>

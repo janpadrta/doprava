@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Customers</h1>
+<h1><%= Customer.model_name.human(count: 2) %></h1>
 
-<table>
+<table class="niceTable">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Ic</th>
-      <th>Dic</th>
-      <th colspan="3"></th>
+      <th><%= t 'activerecord.attributes.customer.name' %></th>
+      <th><%= t 'activerecord.attributes.customer.address' %></th>
+      <th><%= t 'activerecord.attributes.customer.phone' %></th>
+      <th><%= t 'activerecord.attributes.customer.email' %></th>
+      <th><%= t 'activerecord.attributes.customer.ic' %></th>
+      <th><%= t 'activerecord.attributes.customer.dic' %></th>
+      <th colspan="3"><%= link_to 'Nový zákazník', new_customer_path %></th>
     </tr>
   </thead>
 
@@ -26,12 +26,8 @@
         <td><%= customer.dic %></td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Opravdu smazat??' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Customer', new_customer_path %>

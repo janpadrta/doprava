@@ -1,6 +1,6 @@
-<h1>Editing Customer</h1>
+<h1>Úprava zákazníka <%= @customer.name %></h1>
 
 <%= render 'form', customer: @customer %>
 
-<%= link_to 'Show', @customer %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to 'Detail', @customer %> |
+<%= link_to 'Seznam zákazníků', customers_path %>

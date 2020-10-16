@@ -18,7 +18,7 @@ body {
     background-color: #4B7399;
     background: linear-gradient(to left, #ffc0c0, #ffff98);
     font-family: Verdana, Helvetica, Arial;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 a img {
@@ -110,4 +110,44 @@ label, textarea, input {
 input {
     border-style: solid;
     border-width: 1px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "leftup leftup rightup rightup"
+    "leftmiddle leftmiddle rightmiddle rightmiddle"
+    "leftdown leftdown rightdown rightdown";
+}
+.leftup { grid-area: leftup; }
+.rightup { grid-area: rightup; }
+.leftmiddle { grid-area: leftmiddle; }
+.rightmiddle { grid-area: rightmiddle; }
+.leftdown { grid-area: leftdown; }
+.rightdown { grid-area: rightdown; }
+
+.styled-select {
+    width: 100px;
+    height: 17px;
+    overflow: hidden;
+    overflow: -moz-hidden-unscrollable;
+    background: url(images/downarrow_blue.png) no-repeat right white;
+    border: 2px double #000000;
+    display: inline-block;
+    position: relative;
+}
+
+.styled-select select {
+    background: transparent;
+    -webkit-appearance: none;
+    width: 100px;
+    /*font-size: 11px;*/
+    border: 0;
+    height: 17px;
+    position: absolute;
+    left: 0;
+    top: 0;
 }

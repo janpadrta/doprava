@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :datum %>
-    <%= form.date_select :datum %>
+    <%= form.date_select :datum, {}, {class: 'styled-select'} %>
   </div>
 
   <div class="field">
@@ -43,12 +43,12 @@
 
   <div class="field">
     <%= form.label :origin_id %>
-    <%= form.select(:origin_id, options_from_collection_for_select(Customer.all, 'id', 'name') ) %>
+    <%= form.select(:origin_id, options_from_collection_for_select(Customer.all, 'id', 'name'), {}, {class: 'styled-select'} ) %>
   </div>
 
   <div class="field">
     <%= form.label :destination_id %>
-    <%= form.select(:destination_id, options_from_collection_for_select(Customer.all, 'id', 'name') ) %>
+    <%= form.select(:destination_id, options_from_collection_for_select(Customer.all, 'id', 'name'), {}, {class: 'styled-select'} ) %>
   </div>
 
   <div class="field">
@@ -73,12 +73,12 @@
 
   <div class="field">
     <%= form.label :currency %>
-    <%= form.text_field :currency %>
+    <%= form.select :currency, options_for_select(["Kč", "€"]), {}, {class: 'styled-select'} %>
   </div>
 
   <div class="field">
     <%= form.label :customer_id %>
-    <%= form.select(:customer_id, options_from_collection_for_select(Customer.all, 'id', 'name') ) %>
+    <%= form.select(:customer_id, options_from_collection_for_select(Customer.all, 'id', 'name'), {}, {class: 'styled-select'} ) %>
   </div>
 
   <div class="actions">

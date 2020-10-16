@@ -7,4 +7,9 @@ module ApplicationHelper
   def ano_ne(test)
     test ? 'Ano' : 'Ne'
   end
+
+  def format_currency(amount, unit)
+    unit = '' if unit.blank?
+    number_to_currency(amount, unit: unit, format: '%n %u')
+  end
 end
