@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @user.phone %>
+</p>
+
+<% if current_user.manager_or_admin? %>
+  <p>
+    <strong>Manager:</strong>
+    <%= @user.manager %>
+  </p>
+
+  <p>
+    <strong>Driver:</strong>
+    <%= @user.driver %>
+  </p>
+<% end %>
