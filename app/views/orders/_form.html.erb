@@ -10,78 +10,38 @@
       </ul>
     </div>
   <% end %>
+    <div class="mb-20 input_holder">
+      <%= form.label :datum %>
+      <%= form.date_select :datum, {}, {class: 'styled-select'} %>
+    </div>
 
-  <div class="field">
-    <%= form.label :datum %>
-    <%= form.date_select :datum, {}, {class: 'styled-select'} %>
-  </div>
+    <%= render 'form/text_field', form: form, column: :label %>
 
-  <div class="field">
-    <%= form.label :label %>
-    <%= form.text_field :label %>
-  </div>
+    <%= render 'form/select', form: form, column: :customer_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name') %>
 
-  <div class="field">
-    <%= form.label :load_type %>
-    <%= form.text_field :load_type %>
-  </div>
+    <%= render 'form/select', form: form, column: :origin_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name') %>
 
-  <div class="field">
-    <%= form.label :load_description %>
-    <%= form.text_field :load_description %>
-  </div>
+    <%= render 'form/select', form: form, column: :destination_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name') %>
 
-  <div class="field">
-    <%= form.label :load_capacity %>
-    <%= form.text_field :load_capacity %>
-  </div>
+    <%= render 'form/check_box', form: form, column: :fix_price %>
 
-  <div class="field">
-    <%= form.label :load_volume %>
-    <%= form.text_field :load_volume %>
-  </div>
+    <%= render 'form/text_field', form: form, column: :distance %>
 
-  <div class="field">
-    <%= form.label :origin_id %>
-    <%= form.select(:origin_id, options_from_collection_for_select(Customer.all, 'id', 'name'), {}, {class: 'styled-select'} ) %>
-  </div>
+    <%= render 'form/text_field', form: form, column: :price_per_km %>
 
-  <div class="field">
-    <%= form.label :destination_id %>
-    <%= form.select(:destination_id, options_from_collection_for_select(Customer.all, 'id', 'name'), {}, {class: 'styled-select'} ) %>
-  </div>
+    <%= render 'form/text_field', form: form, column: :price %>
 
-  <div class="field">
-    <%= form.label :distance %>
-    <%= form.text_field :distance %>
-  </div>
+    <%= render 'form/select', form: form, column: :currency, options_var: options_for_select(%w[Kč €]) %>
 
-  <div class="field">
-    <%= form.label :fix_price %>
-    <%= form.check_box :fix_price %>
-  </div>
+    <%= render 'form/text_field', form: form, column: :load_type %>
 
-  <div class="field">
-    <%= form.label :price_per_km %>
-    <%= form.text_field :price_per_km %>
-  </div>
+    <%= render 'form/text_field', form: form, column: :load_description %>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
+    <%= render 'form/text_field', form: form, column: :load_capacity %>
 
-  <div class="field">
-    <%= form.label :currency %>
-    <%= form.select :currency, options_for_select(["Kč", "€"]), {}, {class: 'styled-select'} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.select(:customer_id, options_from_collection_for_select(Customer.all, 'id', 'name'), {}, {class: 'styled-select'} ) %>
-  </div>
+    <%= render 'form/text_field', form: form, column: :load_volume %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button 'Uložit' %>
   </div>
 <% end %>

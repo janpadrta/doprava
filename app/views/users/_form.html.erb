@@ -11,44 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+  <%= render 'form/text_field', form: form, column: :email %>
 
-  <div class="field">
-    <%= form.label :password %><br />
-    <%= form.password_field :password %>
-  </div>
+  <%= render 'form/password_field', form: form, column: :password %>
 
-  <div class="field">
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation %>
-  </div>
+  <%= render 'form/password_field', form: form, column: :password_confirmation %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <%= render 'form/text_field', form: form, column: :name %>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
+  <%= render 'form/text_field', form: form, column: :phone %>
 
   <% if current_user.manager_or_admin? %>
-    <div class="field">
-      <%= form.label :manager %>
-      <%= form.check_box :manager %>
-    </div>
 
-    <div class="field">
-      <%= form.label :driver %>
-      <%= form.check_box :driver %>
-    </div>
+    <%= render 'form/check_box', form: form, column: :manager %>
+
+    <%= render 'form/check_box', form: form, column: :driver %>
+
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <br/>
+
+    <div class="form-group row">
+      <div class="offset-4 col-8">
+        <%= form.button 'Uložit' %>
+      </div>
+    </div>
 <% end %>

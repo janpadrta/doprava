@@ -1,0 +1,49 @@
+<!-- Sidebar -->
+<div id="sidebar">
+
+  <div class="inner">
+
+    <!-- Menu -->
+    <nav id="menu">
+      <ul>
+        <% if current_user %>
+          <li><%= link_to 'Domů', static_home_path %></li>
+          <% if current_user.admin? %>
+            <li><%= link_to 'A - Uživatelé', users_path %></li>
+          <% end %>
+          <% if current_user.manager_or_admin? %>
+            <li><strong><%= link_to 'Zákazníci', customers_path %></strong></li>
+            <li><strong><%= link_to 'Zakázky', orders_path %></strong></li>
+          <% end %>
+          <% if current_user.driver_or_manager_or_admin? %>
+            <li>dri prvni</li>
+          <% end %>
+          <li><%= link_to "Uprav profil", edit_user_path(current_user.id) %></li>
+          <li><%= link_to "Odhlásit", :logout, method: :post %></li>
+        <% else %>
+          <li><%= link_to "Přihlásit", :login %></li>
+        <% end %>
+        <li><%= link_to 'O nás', static_about_path %></li>
+        <li><%= link_to 'Kontakt', static_contact_path %></li>
+        <li>
+          <span class="opener">Dropdown Two</span>
+          <ul>
+            <li><a href="#">Sub Menu #1</a></li>
+            <li><a href="#">Sub Menu #2</a></li>
+            <li><a href="#">Sub Menu #3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <% if current_user&.admin? %>
+        <p id="current_users"> Aktivní uživatelé: <%= current_users_list %></p>
+      <% end %>
+      <p class="copyright">Copyright &copy; 2020 DOPAJO
+<!--        <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>-->
+    </footer>
+
+  </div>
+</div>

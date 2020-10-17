@@ -11,38 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <%= render 'form/text_field', form: form, column: :name %>
 
+  <%= render 'form/text_field', form: form, column: :address %>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
+  <%= render 'form/text_field', form: form, column: :phone %>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
+  <%= render 'form/text_field', form: form, column: :email %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+  <%= render 'form/number_field', form: form, column: :ic %>
 
-  <div class="field">
-    <%= form.label :ic %>
-    <%= form.number_field :ic %>
-  </div>
-
-  <div class="field">
-    <%= form.label :dic %>
-    <%= form.text_field :dic %>
-  </div>
+  <%= render 'form/text_field', form: form, column: :dic %>
 
   <div class="actions">
-    <%= form.submit 'Uložit' %>
+    <%= form.button 'Uložit' %>
   </div>
 <% end %>
