@@ -25,6 +25,7 @@ gem 'sorcery'
 gem 'select2-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'os'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
