@@ -10,10 +10,7 @@
       </ul>
     </div>
   <% end %>
-    <div class="mb-20 input_holder">
-      <%= form.label :datum %>
-      <%= form.date_select :datum, {}, {class: 'styled-select'} %>
-    </div>
+    <%= render 'form/date_select', form: form, column: :datum %>
 
     <%= render 'form/text_field', form: form, column: :label %>
 
