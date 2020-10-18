@@ -37,6 +37,7 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :origin, foreign_key: :origin_id, class_name: 'Customer'
   belongs_to :destination, foreign_key: :destination_id, class_name: 'Customer'
+  has_many :invoices
 
   scope :finished, -> { where(finished: true) }
   scope :active, -> { where(finished: false) }

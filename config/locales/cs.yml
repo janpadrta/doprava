@@ -7,6 +7,9 @@ cs:
       customer:
         one: Zákazník
         other: Zákazníci
+      invoice:
+        one: Faktura
+        other: Faktury
       order:
         one: Zakázka
         other: Zakázky
@@ -21,6 +24,17 @@ cs:
         ic: 'IČ'
         name: 'Jméno'
         phone: 'Telefon'
+      invoice:
+        date_of_issue: 'Datum vydání'
+        date_of_taxable_supply: 'Datum zdanitelného plnění'
+        due_date: 'Datum splatnosti'
+        payment_type: 'Typ platby'
+        reference_number: 'Číslo'
+        tax_base: 'Základ daně'
+        to_be_paid: 'Celkem k úhradě'
+        vat: 'DPH'
+        order_id: 'Objednávka'
+        user_id: 'Vystavil'
       order:
         currency: "Měna"
         datum: "Datum"

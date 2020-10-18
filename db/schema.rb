@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 8) do
+ActiveRecord::Schema.define(version: 9) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,23 @@ ActiveRecord::Schema.define(version: 8) do
     t.string "dic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.text "reference_number"
+    t.bigint "order_id", null: false
+    t.text "payment_type"
+    t.date "date_of_issue"
+    t.date "due_date"
+    t.date "date_of_taxable_supply"
+    t.decimal "tax_base", precision: 10, scale: 3
+    t.decimal "vat", precision: 10, scale: 3
+    t.decimal "to_be_paid", precision: 10, scale: 3
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_invoices_on_order_id"
+    t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -77,6 +94,8 @@ ActiveRecord::Schema.define(version: 8) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token"
   end
 
+  add_foreign_key "invoices", "orders"
+  add_foreign_key "invoices", "users"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "users"
 end

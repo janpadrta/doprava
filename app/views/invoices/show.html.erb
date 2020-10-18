@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reference number:</strong>
+  <%= @invoice.reference_number %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @invoice.order_id %>
+</p>
+
+<p>
+  <strong>Payment type:</strong>
+  <%= @invoice.payment_type %>
+</p>
+
+<p>
+  <strong>Date of issue:</strong>
+  <%= @invoice.date_of_issue %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @invoice.due_date %>
+</p>
+
+<p>
+  <strong>Date of taxable supply:</strong>
+  <%= @invoice.date_of_taxable_supply %>
+</p>
+
+<p>
+  <strong>Tax base:</strong>
+  <%= @invoice.tax_base %>
+</p>
+
+<p>
+  <strong>Vat:</strong>
+  <%= @invoice.vat %>
+</p>
+
+<p>
+  <strong>To be paid:</strong>
+  <%= @invoice.to_be_paid %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @invoice.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

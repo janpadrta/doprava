@@ -6,92 +6,96 @@
       <strong><%= t 'activerecord.attributes.order.label' %>:</strong>
       <%= @order.label %>
     </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.datum' %>:</strong>
+      <%= format_date @order.datum %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.load_type' %>:</strong>
+      <%= @order.load_type %>
+    </p>
   </div>
-  <div class="rightup"></div>
-  <div class="leftmiddle"></div>
-  <div class="rightmiddle"></div>
-  <div class="leftdown"></div>
-  <div class="rightdown"></div>
+  <div class="rightup">
+    <p>
+      <strong><%= t 'activerecord.attributes.order.origin_id' %>:</strong>
+      <%= @order.origin.name %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.destination_id' %>:</strong>
+      <%= @order.destination.name %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.customer_id' %>:</strong>
+      <%= @order.customer.name %>
+    </p>
+  </div>
+  <div class="leftmiddle">
+    <p>
+      <strong><%= t 'activerecord.attributes.order.load_description' %>:</strong>
+      <%= @order.load_description %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.load_capacity' %>:</strong>
+      <%= @order.load_capacity %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.load_volume' %>:</strong>
+      <%= @order.load_volume %>
+    </p>
+  </div>
+  <div class="rightmiddle">
+    <p>
+      <strong><%= t 'activerecord.attributes.order.finished' %>:</strong>
+      <%= ano_ne @order.finished %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.user_id' %>:</strong>
+      <%= @order.user.name %>
+    </p>
+  </div>
+  <div class="leftdown">
+    <p>
+      <strong><%= t 'activerecord.attributes.order.fix_price' %>:</strong>
+      <%= @order.fix_price %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.distance' %>:</strong>
+      <%= @order.distance %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.price_per_km' %>:</strong>
+      <%= @order.price_per_km %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.price' %>:</strong>
+      <%= @order.price %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.full_price' %>:</strong>
+      <%= format_currency @order.full_price, @order.currency %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.currency' %>:</strong>
+      <%= @order.currency %>
+    </p>
+  </div>
+  <div class="rightdown">
+    <%= link_to 'Edit', edit_order_path(@order) %>
+    <br/>
+    <%= link_to 'Přehled zakázek', orders_path %>
+    <br/>
+    <%= link_to 'Vytvoř fakturu', controller: :invoices, action: :new, order_id: @order.id %>
+  </div>
 </div>
-<p>
-  <strong><%= t 'activerecord.attributes.order.datum' %>:</strong>
-  <%= format_date @order.datum %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.load_type' %>:</strong>
-  <%= @order.load_type %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.load_description' %>:</strong>
-  <%= @order.load_description %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.load_capacity' %>:</strong>
-  <%= @order.load_capacity %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.load_volume' %>:</strong>
-  <%= @order.load_volume %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.origin_id' %>:</strong>
-  <%= @order.origin.name %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.destination_id' %>:</strong>
-  <%= @order.destination.name %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.distance' %>:</strong>
-  <%= @order.distance %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.fix_price' %>:</strong>
-  <%= @order.fix_price %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.price_per_km' %>:</strong>
-  <%= @order.price_per_km %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.price' %>:</strong>
-  <%= @order.price %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.full_price' %>:</strong>
-  <%= format_currency @order.full_price, @order.currency %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.currency' %>:</strong>
-  <%= @order.currency %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.customer_id' %>:</strong>
-  <%= @order.customer.name %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.user_id' %>:</strong>
-  <%= @order.user.name %>
-</p>
-
-<p>
-  <strong><%= t 'activerecord.attributes.order.finished' %>:</strong>
-  <%= ano_ne @order.finished %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Přehled zakázek', orders_path %>

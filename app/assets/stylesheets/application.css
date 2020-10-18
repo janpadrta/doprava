@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 30% 30% 30%;
+    gap: 0px 0px;
+    grid-template-areas:
+    "leftup leftup rightup rightup"
+    "leftmiddle leftmiddle rightmiddle rightmiddle"
+    "leftdown leftdown rightdown rightdown";
+}
+.leftup { grid-area: leftup; }
+.rightup { grid-area: rightup; }
+.leftmiddle { grid-area: leftmiddle; }
+.rightmiddle { grid-area: rightmiddle; }
+.leftdown { grid-area: leftdown; }
+.rightdown { grid-area: rightdown; }
