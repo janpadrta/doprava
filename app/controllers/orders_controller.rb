@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.includes(:origin, :destination, :customer, :user).all
+    scope = params[:scope] || 'active'
+    @orders = Order.includes(:origin, :destination, :customer, :user).send(scope).order(:datum).all
   end
 
   # GET /orders/1
@@ -70,6 +71,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:datum, :load_type, :load_description, :load_capacity, :load_volume, :origin_id, :destination_id, :distance, :fix_price, :price_per_km, :price, :customer_id, :currency, :label)
+      params.require(:order).permit(:datum, :load_type, :load_description, :load_capacity, :load_volume, :origin_id, :destination_id, :distance, :finished, :fix_price, :price_per_km, :price, :customer_id, :currency, :label)
     end
 end

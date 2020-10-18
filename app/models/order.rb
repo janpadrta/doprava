@@ -6,6 +6,7 @@
 #  currency         :text
 #  datum            :date
 #  distance         :decimal(10, 2)
+#  finished         :boolean
 #  fix_price        :boolean
 #  label            :text
 #  load_capacity    :decimal(10, 3)
@@ -36,6 +37,9 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :origin, foreign_key: :origin_id, class_name: 'Customer'
   belongs_to :destination, foreign_key: :destination_id, class_name: 'Customer'
+
+  scope :finished, -> { where(finished: true) }
+  scope :active, -> { where(finished: false) }
 
   def full_price
     if fix_price?

@@ -14,11 +14,11 @@
 
     <%= render 'form/text_field', form: form, column: :label %>
 
-    <%= render 'form/select', form: form, column: :customer_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name') %>
+    <%= render 'form/select', form: form, column: :customer_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name', @order.customer_id) %>
 
-    <%= render 'form/select', form: form, column: :origin_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name') %>
+    <%= render 'form/select', form: form, column: :origin_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name', @order.origin_id) %>
 
-    <%= render 'form/select', form: form, column: :destination_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name') %>
+    <%= render 'form/select', form: form, column: :destination_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name', @order.destination_id) %>
 
     <%= render 'form/check_box', form: form, column: :fix_price %>
 
@@ -28,7 +28,7 @@
 
     <%= render 'form/text_field', form: form, column: :price %>
 
-    <%= render 'form/select', form: form, column: :currency, options_var: options_for_select(%w[Kč €]) %>
+    <%= render 'form/select', form: form, column: :currency, options_var: options_for_select(%w[Kč €], @order.currency) %>
 
     <%= render 'form/text_field', form: form, column: :load_type %>
 
@@ -37,6 +37,8 @@
     <%= render 'form/text_field', form: form, column: :load_capacity %>
 
     <%= render 'form/text_field', form: form, column: :load_volume %>
+
+    <%= render 'form/check_box', form: form, column: :finished %>
 
   <div class="actions">
     <%= form.button 'Uložit' %>

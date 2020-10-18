@@ -22,6 +22,7 @@ cs:
         currency: "Měna"
         datum: "Datum"
         distance: "Vzdálenost"
+        finished: "Ukončená"
         fix_price: "Fixní cena"
         label: "Označení"
         load_capacity: "Velikost nákladu"

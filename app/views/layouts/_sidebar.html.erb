@@ -13,7 +13,8 @@
           <% end %>
           <% if current_user.manager_or_admin? %>
             <li><strong><%= link_to 'Zákazníci', customers_path %></strong></li>
-            <li><strong><%= link_to 'Zakázky', orders_path %></strong></li>
+            <li><strong><%= link_to 'Aktivní zakázky', orders_path(scope: 'active') %></strong></li>
+            <li><strong><%= link_to 'Ukončené zakázky', orders_path(scope: 'finished') %></strong></li>
           <% end %>
           <% if current_user.driver_or_manager_or_admin? %>
             <li>dri prvni</li>
@@ -25,14 +26,14 @@
         <% end %>
         <li><%= link_to 'O nás', static_about_path %></li>
         <li><%= link_to 'Kontakt', static_contact_path %></li>
-        <li>
-          <span class="opener">Dropdown Two</span>
-          <ul>
-            <li><a href="#">Sub Menu #1</a></li>
-            <li><a href="#">Sub Menu #2</a></li>
-            <li><a href="#">Sub Menu #3</a></li>
-          </ul>
-        </li>
+<!--        <li>-->
+<!--          <span class="opener">Dropdown Two</span>-->
+<!--          <ul>-->
+<!--            <li><a href="#">Sub Menu #1</a></li>-->
+<!--            <li><a href="#">Sub Menu #2</a></li>-->
+<!--            <li><a href="#">Sub Menu #3</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
       </ul>
     </nav>
 

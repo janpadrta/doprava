@@ -6,6 +6,7 @@
 #  currency         :text
 #  datum            :date
 #  distance         :decimal(10, 2)
+#  finished         :boolean
 #  fix_price        :boolean
 #  label            :text
 #  load_capacity    :decimal(10, 3)
