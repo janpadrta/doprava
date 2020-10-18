@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= Order.model_name.human(count: 2) %></h1>
+<h1><%= t 'zakazka.' + params[:scope].to_s %><%= Order.model_name.human(count: 2) %></h1>
 
 <table class="niceTable">
   <thead>

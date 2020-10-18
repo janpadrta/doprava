@@ -1,4 +1,7 @@
 cs:
+  zakazka:
+    active: 'Aktivní '
+    finished: 'Ukončené '
   activerecord:
     models:
       customer:
