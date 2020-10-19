@@ -15,6 +15,7 @@
 #  load_volume      :decimal(10, 3)
 #  price            :decimal(10, 3)
 #  price_per_km     :decimal(10, 3)
+#  vat_percentage   :decimal(10, 3)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  customer_id      :integer          not null

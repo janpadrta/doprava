@@ -59,39 +59,45 @@
       <strong><%= t 'activerecord.attributes.order.user_id' %>:</strong>
       <%= @order.user.name %>
     </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.currency' %>:</strong>
+      <%= @order.currency %>
+    </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.vat_percentage' %>:</strong>
+      <%= format_currency @order.vat_percentage, '%' %>
+    </p>
   </div>
   <div class="leftdown">
     <p>
       <strong><%= t 'activerecord.attributes.order.fix_price' %>:</strong>
-      <%= @order.fix_price %>
+      <%= format_currency @order.fix_price, @order.currency %>
     </p>
 
     <p>
       <strong><%= t 'activerecord.attributes.order.distance' %>:</strong>
-      <%= @order.distance %>
+      <%= format_currency @order.distance, 'km' %>
     </p>
 
     <p>
       <strong><%= t 'activerecord.attributes.order.price_per_km' %>:</strong>
-      <%= @order.price_per_km %>
+      <%= format_currency @order.price_per_km, @order.currency %>
     </p>
 
     <p>
       <strong><%= t 'activerecord.attributes.order.price' %>:</strong>
-      <%= @order.price %>
+      <%= format_currency @order.price, @order.currency %>
     </p>
 
     <p>
       <strong><%= t 'activerecord.attributes.order.full_price' %>:</strong>
       <%= format_currency @order.full_price, @order.currency %>
     </p>
-
-    <p>
-      <strong><%= t 'activerecord.attributes.order.currency' %>:</strong>
-      <%= @order.currency %>
-    </p>
   </div>
   <div class="rightdown">
+    <br/><br/>
     <%= link_to 'Edit', edit_order_path(@order) %>
     <br/>
     <%= link_to 'Přehled zakázek', orders_path %>

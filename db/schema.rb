@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 9) do
+ActiveRecord::Schema.define(version: 12) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 9) do
     t.string "dic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "kind"
+  end
+
+  create_table "invoice_lines", force: :cascade do |t|
+    t.bigint "invoice_id", null: false
+    t.string "label"
+    t.decimal "price", precision: 10, scale: 3
+    t.decimal "vat_percent", precision: 10, scale: 3
+    t.decimal "vat", precision: 10, scale: 3
+    t.decimal "price_with_vat", precision: 10, scale: 3
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["invoice_id"], name: "index_invoice_lines_on_invoice_id"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -62,6 +75,7 @@ ActiveRecord::Schema.define(version: 9) do
     t.text "currency"
     t.text "label"
     t.boolean "finished"
+    t.decimal "vat_percentage", precision: 10, scale: 3
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -94,6 +108,7 @@ ActiveRecord::Schema.define(version: 9) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token"
   end
 
+  add_foreign_key "invoice_lines", "invoices"
   add_foreign_key "invoices", "orders"
   add_foreign_key "invoices", "users"
   add_foreign_key "orders", "customers"

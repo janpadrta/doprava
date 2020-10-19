@@ -930,19 +930,19 @@ section.buttons .container-fluid {
     transition: margin-left 0.5s ease, box-shadow 0.5s ease;
     background-color: #24252d;
     position: relative;
-    width: 420px;
+    width: 320px;
 }
 
 #sidebar > .inner {
     position: relative;
-    width: 420px;
+    width: 320px;
     padding: 0px 50px;
 }
 
 #sidebar > .inner > #search  {
     background-color: #2d2e39;
     height: 100px;
-    width: 420px;
+    width: 320px;
     display: inline-block;
     margin-left: -50px;
 }
@@ -983,7 +983,7 @@ section.buttons .container-fluid {
     display: block;
     color: #fff;
     height: 100px;
-    left: 420px;
+    left: 320px;
     line-height: 100px;
     outline: 0;
     overflow: hidden;
@@ -1017,30 +1017,30 @@ section.buttons .container-fluid {
 }
 
 #sidebar.inactive {
-    margin-left: -420px;
+    margin-left: -320px;
 }
 
 @media screen and (max-width: 1680px) {
     #sidebar {
-        width: 380px;
+        width: 280px;
     }
     #sidebar > .inner {
         padding: 0px 30px;
-        width: 380px;
+        width: 280px;
     }
     #sidebar .toggle {
         height: 100px;
-        left: 380px;
+        left: 280px;
         line-height: 100px;
     }
     #sidebar .toggle:before {
         font-size: 24px;
     }
     #sidebar.inactive {
-        margin-left: -380px;
+        margin-left: -280px;
     }
     #sidebar > .inner > #search  {
-	    width: 380px;
+	    width: 280px;
 	    margin-left: -30px;
 	}
 	#menu {

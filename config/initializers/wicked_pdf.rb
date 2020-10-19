@@ -13,7 +13,7 @@ WickedPdf.config = {
   # one of the wkhtmltopdf-binary family of gems.
   # exe_path: '/usr/local/bin/wkhtmltopdf',
   #   or
-  exe_path: Aplikace.wkhtmltopdf_path
+  exe_path: Aplikace.wkhtmltopdf_path,
 
   # Layout file to be used for all PDFs
   # (but can be overridden in `render :pdf` calls)
@@ -24,4 +24,9 @@ WickedPdf.config = {
   # 'xvfb-run' command, in order to simulate an X server.
   #
   # use_xvfb: true,
+  margin: {top: 1,
+           bottom: 1,
+           left: 1,
+           right: 1},
+  layout: "pdf_invoice.html.erb"
 }

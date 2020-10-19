@@ -30,3 +30,12 @@
 .rightmiddle { grid-area: rightmiddle; }
 .leftdown { grid-area: leftdown; }
 .rightdown { grid-area: rightdown; }
+
+table.simple {
+    border-collapse: collapse;
+}
+
+table.simple, tr.simple, th.simple, td.simple {
+    border: 1px solid black;
+    border-bottom: 1px solid black !important;
+}

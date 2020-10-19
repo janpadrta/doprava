@@ -11,12 +11,10 @@
     </div>
   <% end %>
 
-  <%= render 'form/text_field', form: form, column: :reference_number %>
+  <%= form.hidden_field :user_id %>
+  <%= form.hidden_field :order_id %>
 
-  <div class="field">
-    <%= form.label :order_id %>
-    <%= form.hidden_field :order_id %>
-  </div>
+  <%= render 'form/text_field', form: form, column: :reference_number %>
 
   <%= render 'form/select', form: form, column: :payment_type, options_var: options_for_select(%w[převodem hotově], @invoice.payment_type) %>
 
@@ -31,11 +29,6 @@
   <%= render 'form/number_field', form: form, column: :vat %>
 
   <%= render 'form/number_field', form: form, column: :to_be_paid %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.hidden_field :user_id %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

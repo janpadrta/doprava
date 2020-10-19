@@ -23,6 +23,8 @@
 
   <%= render 'form/text_field', form: form, column: :dic %>
 
+  <%= render 'form/select', form: form, column: :kind, options_var: options_for_select([['Dopajo', 0], ['Zadavatel', 1], ['Firma', 2]], @customer.kind) %>
+
   <div class="actions">
     <%= form.button 'Uložit' %>
   </div>

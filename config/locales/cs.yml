@@ -35,6 +35,13 @@ cs:
         vat: 'DPH'
         order_id: 'Objednávka'
         user_id: 'Vystavil'
+      invoice_line:
+        label: 'Označení'
+        price: 'Cena'
+        price_with_vat: 'Celkem s DPH'
+        vat: 'DPH'
+        vat_percent: '% DPH'
+        invoice_id: 'Faktura'
       order:
         currency: "Měna"
         datum: "Datum"
@@ -53,6 +60,7 @@ cs:
         origin_id: "Původ"
         user_id: "zadal"
         full_price: "Celková cena"
+        vat_percentage: "Sazba daně"
       user:
         admin: 'Admin'
         driver: 'Řidič'

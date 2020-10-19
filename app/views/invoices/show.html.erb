@@ -1,54 +1,79 @@
 <p id="notice"><%= notice %></p>
+<div class="grid-container">
+  <div class="leftup">
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.reference_number' %>:</strong>
+      <%= @invoice.reference_number %>
+    </p>
 
-<p>
-  <strong>Reference number:</strong>
-  <%= @invoice.reference_number %>
-</p>
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.order_id' %>:</strong>
+      <%= link_to @invoice.order.label, @invoice.order %>
+    </p>
 
-<p>
-  <strong>Order:</strong>
-  <%= @invoice.order_id %>
-</p>
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.payment_type' %>:</strong>
+      <%= @invoice.payment_type %>
+    </p>
 
-<p>
-  <strong>Payment type:</strong>
-  <%= @invoice.payment_type %>
-</p>
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.date_of_issue' %>:</strong>
+      <%= format_date @invoice.date_of_issue %>
+    </p>
 
-<p>
-  <strong>Date of issue:</strong>
-  <%= @invoice.date_of_issue %>
-</p>
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.due_date' %>:</strong>
+      <%= format_date @invoice.due_date %>
+    </p>
 
-<p>
-  <strong>Due date:</strong>
-  <%= @invoice.due_date %>
-</p>
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.date_of_taxable_supply' %>:</strong>
+      <%= format_date @invoice.date_of_taxable_supply %>
+    </p>
 
-<p>
-  <strong>Date of taxable supply:</strong>
-  <%= @invoice.date_of_taxable_supply %>
-</p>
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.tax_base' %>:</strong>
+      <%= format_currency @invoice.tax_base, @invoice.currency %>
+    </p>
 
-<p>
-  <strong>Tax base:</strong>
-  <%= @invoice.tax_base %>
-</p>
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.vat' %>:</strong>
+      <%= format_currency @invoice.vat, @invoice.currency %>
+    </p>
 
-<p>
-  <strong>Vat:</strong>
-  <%= @invoice.vat %>
-</p>
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.to_be_paid' %>:</strong>
+      <%= format_currency @invoice.to_be_paid, @invoice.currency %>
+    </p>
 
-<p>
-  <strong>To be paid:</strong>
-  <%= @invoice.to_be_paid %>
-</p>
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.user_id' %>:</strong>
+      <%= @invoice.user.name %>
+    </p>
+  </div>
+  <div class="rightup">
+    <table class="simple">
+      <tr>
+        <th><%= t 'activerecord.attributes.invoice_line.label' %></th>
+        <th><%= t 'activerecord.attributes.invoice_line.price' %></th>
+        <th><%= t 'activerecord.attributes.invoice_line.vat_percent' %></th>
+        <th><%= t 'activerecord.attributes.invoice_line.vat' %></th>
+        <th><%= t 'activerecord.attributes.invoice_line.price_with_vat' %></th>
+      </tr>
+      <% @invoice.invoice_lines.each do |line| %>
+        <tr>
+          <td><%= line.label %></td>
+          <td><%= format_currency line.price, @invoice.currency %></td>
+          <td><%= format_currency line.vat_percent, '%' %></td>
+          <td><%= format_currency line.vat, @invoice.currency %></td>
+          <td><%= format_currency line.price_with_vat, @invoice.currency %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @invoice.user_id %>
-</p>
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<%= link_to 'Přehled faktur', invoices_path %> |
+<%= link_to 'PDF', generate_invoice_show_path(invoice_id: @invoice.id, format: :pdf), target: :blank %>

@@ -28,6 +28,8 @@
 
     <%= render 'form/text_field', form: form, column: :price %>
 
+    <%= render 'form/number_field', form: form, column: :vat_percentage %>
+
     <%= render 'form/select', form: form, column: :currency, options_var: options_for_select(%w[Kč €], @order.currency) %>
 
     <%= render 'form/text_field', form: form, column: :load_type %>

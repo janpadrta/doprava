@@ -7,6 +7,7 @@
 #  dic        :string
 #  email      :string
 #  ic         :integer
+#  kind       :integer
 #  name       :string           not null
 #  phone      :string
 #  created_at :datetime         not null

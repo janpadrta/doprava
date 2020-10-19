@@ -15,6 +15,7 @@
 #  load_volume      :decimal(10, 3)
 #  price            :decimal(10, 3)
 #  price_per_km     :decimal(10, 3)
+#  vat_percentage   :decimal(10, 3)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  customer_id      :integer          not null
@@ -42,11 +43,28 @@ class Order < ApplicationRecord
   scope :finished, -> { where(finished: true) }
   scope :active, -> { where(finished: false) }
 
+  after_initialize :default_values
+
   def full_price
     if fix_price?
       price
     else
       price_per_km * distance
     end
+  end
+
+  def vat_price
+    full_price * (vat_percentage / 100.0)
+  end
+
+  def price_with_vat
+    full_price + vat_price
+  end
+
+  private
+
+  def default_values
+    self.vat_percentage ||= 21.0
+    self.finished ||= false
   end
 end

@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
     logger.info(string)
   end
 
+  helper_method
+  def dopajo
+    Customer.dopajo.first
+  end
+
   helper_method :current_users_list
   protected
   def current_users_list

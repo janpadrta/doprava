@@ -29,4 +29,40 @@
 class Invoice < ApplicationRecord
   belongs_to :order
   belongs_to :user
+  has_many :invoice_lines, dependent: :destroy
+
+  after_initialize :po_inicializaci
+  before_create :pred_vytvorenim
+
+  def currency
+    self.order.currency
+  end
+
+  def vat_percentage
+    self.order.vat_percentage
+  end
+
+  private
+
+  def pred_vytvorenim
+    self.invoice_lines << InvoiceLine.new(
+      label: 'Dopravní služby',
+      price: self.tax_base,
+      price_with_vat: self.to_be_paid,
+      vat: self.vat,
+      vat_percent: self.vat_percentage
+    )
+  end
+
+  def po_inicializaci
+    self.reference_number ||= "#{Date.today.year}#{Order.count.to_s.rjust(5, "0")}"
+
+    self.date_of_issue ||= Date.today
+    self.date_of_taxable_supply ||= Date.today
+    self.due_date ||= 60.days.since
+
+    self.tax_base ||= self.order.full_price
+    self.vat ||= self.order.vat_price
+    self.to_be_paid ||= self.order.price_with_vat
+  end
 end
