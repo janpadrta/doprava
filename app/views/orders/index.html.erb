@@ -12,7 +12,7 @@
       <th><%= t 'activerecord.attributes.order.fix_price' %></th>
       <th><%= t 'activerecord.attributes.order.full_price' %></th>
       <th><%= t 'activerecord.attributes.order.customer_id' %></th>
-      <th colspan="3"><%= link_to 'Nová zakázka', new_order_path %></th>
+      <th colspan="4"><%= link_to 'Nová zakázka', new_order_path %></th>
     </tr>
   </thead>
 
@@ -26,6 +26,9 @@
         <td><%= ano_ne order.fix_price %></td>
         <td><%= format_currency order.full_price, order.currency %></td>
         <td><%= order.customer.name %></td>
+        <td><%= button_to "Dokončeno", order_path(order.id),
+                          params: {:order => { :id => order.id, :finished => true }},
+                          method: :put, data: { confirm: "Opravdu označit zakázku jako dokončenou?" } unless order.finished? %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Opravdu smazat?' } %></td>
