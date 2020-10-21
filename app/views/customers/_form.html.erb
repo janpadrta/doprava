@@ -13,7 +13,10 @@
 
   <%= render 'form/text_field', form: form, column: :name %>
 
-  <%= render 'form/text_field', form: form, column: :address %>
+  <%= render 'form/text_field', form: form, column: :street %>
+  <%= render 'form/text_field', form: form, column: :number %>
+  <%= render 'form/text_field', form: form, column: :psc %>
+  <%= render 'form/text_field', form: form, column: :city %>
 
   <%= render 'form/text_field', form: form, column: :phone %>
 
@@ -22,6 +25,8 @@
   <%= render 'form/number_field', form: form, column: :ic %>
 
   <%= render 'form/text_field', form: form, column: :dic %>
+
+  <%= render 'form/text_field', form: form, column: :bank_account %>
 
   <%= render 'form/select', form: form, column: :kind, options_var: options_for_select([['Dopajo', 0], ['Zadavatel', 1], ['Firma', 2]], @customer.kind) %>
 

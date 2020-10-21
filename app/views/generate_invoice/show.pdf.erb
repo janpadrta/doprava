@@ -23,7 +23,8 @@
     <td class="tg-zv4m" colspan="4" style="background-color: lightgray; border-color: lightgray;">
       <p class="velikost_18">DODAVATEL</p>
       <%= dopajo_obj.name %><br/>
-      <%= dopajo_obj.address %><br/>
+      <%= "#{dopajo_obj.street} #{dopajo_obj.number}" %><br/>
+      <%= "#{dopajo_obj.psc} #{dopajo_obj.city}" %><br/>
       IČ: <%= dopajo_obj.ic %><br/>
       DIČ: <%= dopajo_obj.dic %><br/>
     </td>

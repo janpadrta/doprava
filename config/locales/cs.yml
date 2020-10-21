@@ -24,6 +24,11 @@ cs:
         ic: 'IČ'
         name: 'Jméno'
         phone: 'Telefon'
+        street: 'Ulice'
+        number: 'Číslo'
+        psc: 'PSČ'
+        city: 'Město'
+        bank_account: 'Bankovní účet'
       invoice:
         date_of_issue: 'Datum vydání'
         date_of_taxable_supply: 'Datum zdanitelného plnění'

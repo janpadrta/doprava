@@ -1,34 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
+  <strong><%= t 'activerecord.attributes.customer.name' %>:</strong>
+  <strong style="font-size: 30px"><%= @customer.name %></strong>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong><%= t 'activerecord.attributes.customer.address' %>:</strong>
   <%= @customer.address %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong><%= t 'activerecord.attributes.customer.phone' %>:</strong>
   <%= @customer.phone %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong><%= t 'activerecord.attributes.customer.email' %>:</strong>
   <%= @customer.email %>
 </p>
 
 <p>
-  <strong>Ic:</strong>
+  <strong><%= t 'activerecord.attributes.customer.ic' %>:</strong>
   <%= @customer.ic %>
 </p>
 
 <p>
-  <strong>Dic:</strong>
+  <strong><%= t 'activerecord.attributes.customer.dic' %>:</strong>
   <%= @customer.dic %>
 </p>
 
+<p>
+  <strong><%= t 'activerecord.attributes.customer.bank_account' %>:</strong>
+  <%= @customer.bank_account %>
+</p>
+<br/>
+<br/>
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Seznam zákazníků', customers_path %>
