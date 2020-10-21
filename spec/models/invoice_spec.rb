@@ -13,6 +13,7 @@
 #  vat                    :decimal(10, 3)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  customer_id            :integer
 #  order_id               :bigint           not null
 #  user_id                :bigint           not null
 #

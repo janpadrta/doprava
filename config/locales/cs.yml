@@ -10,6 +10,9 @@ cs:
       invoice:
         one: Faktura
         other: Faktury
+      invoice_line:
+        one: Řádek faktury
+        other: Řádky faktury
       order:
         one: Zakázka
         other: Zakázky
@@ -40,6 +43,7 @@ cs:
         vat: 'DPH'
         order_id: 'Objednávka'
         user_id: 'Vystavil'
+        customer_id: 'Odběratel'
       invoice_line:
         label: 'Označení'
         price: 'Cena'

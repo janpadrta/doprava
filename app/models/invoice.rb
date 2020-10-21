@@ -13,6 +13,7 @@
 #  vat                    :decimal(10, 3)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  customer_id            :integer
 #  order_id               :bigint           not null
 #  user_id                :bigint           not null
 #
@@ -30,6 +31,7 @@ class Invoice < ApplicationRecord
   belongs_to :order
   belongs_to :user
   has_many :invoice_lines, dependent: :destroy
+  belongs_to :customer
 
   after_initialize :po_inicializaci
   before_create :pred_vytvorenim

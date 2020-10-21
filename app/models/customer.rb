@@ -19,6 +19,7 @@
 #
 class Customer < ApplicationRecord
   has_many :orders
+  has_many :invoices
 
   scope :dopajo, -> { where(kind: 0) }
   scope :zadavatele, -> { where(kind: 1) }

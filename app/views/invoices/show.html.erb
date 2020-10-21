@@ -12,6 +12,11 @@
     </p>
 
     <p>
+      <strong><%= t 'activerecord.attributes.invoice.customer_id' %>:</strong>
+      <%= @invoice.customer.name %>
+    </p>
+
+    <p>
       <strong><%= t 'activerecord.attributes.invoice.payment_type' %>:</strong>
       <%= @invoice.payment_type %>
     </p>

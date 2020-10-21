@@ -30,6 +30,11 @@
     </td>
     <td class="tg-zv4m" colspan="4" style="background-color: lightgray; border-color: lightgray;">
       <p class="velikost_18">ODBĚRATEL</p>
+      <%= @invoice.customer.name %><br/>
+      <%= "#{@invoice.customer.street} #{@invoice.customer.number}" %><br/>
+      <%= "#{@invoice.customer.psc} #{@invoice.customer.city}" %><br/>
+      IČ: <%= @invoice.customer.ic %><br/>
+      DIČ: <%= @invoice.customer.dic %><br/>
     </td>
     <td class="tg-ofj5" colspan="4" style="background-color: lightgray; border-color: lightgray;">
       <p class="velikost_18">DATUM VYSTAVENÍ</p>

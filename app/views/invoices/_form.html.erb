@@ -16,6 +16,8 @@
 
   <%= render 'form/text_field', form: form, column: :reference_number %>
 
+  <%= render 'form/select', form: form, column: :customer_id, options_var: options_from_collection_for_select(Customer.where(id: [@order.customer_id, @order.destination_id, @order.origin_id]).all, 'id', 'name', @order.customer_id) %>
+
   <%= render 'form/select', form: form, column: :payment_type, options_var: options_for_select(%w[převodem hotově], @invoice.payment_type) %>
 
   <%= render 'form/date_select', form: form, column: :date_of_issue %>

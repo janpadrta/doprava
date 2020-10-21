@@ -15,6 +15,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new(user_id: current_user.id, order_id: params[:order_id])
+    @order = @invoice.order
   end
 
   # GET /invoices/1/edit
@@ -69,6 +70,6 @@ class InvoicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def invoice_params
-      params.require(:invoice).permit(:reference_number, :order_id, :payment_type, :date_of_issue, :due_date, :date_of_taxable_supply, :tax_base, :vat, :to_be_paid, :user_id)
+      params.require(:invoice).permit(:reference_number, :order_id, :payment_type, :date_of_issue, :due_date, :date_of_taxable_supply, :tax_base, :vat, :to_be_paid, :user_id, :customer_id)
     end
 end
