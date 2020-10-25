@@ -1,1 +1,36 @@
 <h1>Úvodní stránka</h1>
+
+<div class="row">
+  <div class="col-6">
+    <div class="row">
+      <div class="col-2"><%= t 'activerecord.attributes.invoice.reference_number' %></div>
+      <div class="col-3"><%= t 'activerecord.attributes.invoice.order_id' %></div>
+      <div class="col-3"><%= t 'activerecord.attributes.invoice.due_date' %></div>
+      <div class="col-3"><%= t 'activerecord.attributes.invoice.to_be_paid' %></div>
+    </div>
+    <% @missed_invoices.each do |invoice| %>
+      <div class="row">
+        <div class="col-2 red" style="font-size: large;"><%= link_to invoice.reference_number, invoice %></div>
+        <div class="col-3 red" style="font-size: large;"><%= link_to invoice.order.label, invoice.order %></div>
+        <div class="col-3 red" style="font-size: large;"><%= format_date invoice.due_date %></div>
+        <div class="col-3 red" style="font-size: large;"><%= format_currency invoice.to_be_paid, invoice.currency %></div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-6">
+    <div class="row">
+      <div class="col-2"><%= t 'activerecord.attributes.invoice.reference_number' %></div>
+      <div class="col-3"><%= t 'activerecord.attributes.invoice.order_id' %></div>
+      <div class="col-3"><%= t 'activerecord.attributes.invoice.due_date' %></div>
+      <div class="col-3"><%= t 'activerecord.attributes.invoice.to_be_paid' %></div>
+    </div>
+    <% @missing_one_week_invoices.each do |invoice| %>
+      <div class="row">
+        <div class="col-2"><%= link_to invoice.reference_number, invoice %></div>
+        <div class="col-3"><%= link_to invoice.order.label, invoice.order %></div>
+        <div class="col-3"><%= format_date invoice.due_date %></div>
+        <div class="col-3"><%= format_currency invoice.to_be_paid, invoice.currency %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

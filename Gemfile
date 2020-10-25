@@ -43,6 +43,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'annotate'
   gem "nifty-generators"
+  gem 'hirb'
 end
 
 group :test do

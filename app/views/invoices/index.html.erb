@@ -10,6 +10,7 @@
       <th><%= t 'activerecord.attributes.invoice.date_of_issue' %></th>
       <th><%= t 'activerecord.attributes.invoice.due_date' %></th>
       <th><%= t 'activerecord.attributes.invoice.to_be_paid' %></th>
+      <th><%= t 'activerecord.attributes.invoice.paid_on' %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= format_date invoice.date_of_issue %></td>
         <td><%= format_date invoice.due_date %></td>
         <td><%= format_currency invoice.to_be_paid, invoice.currency %></td>
+        <td><%= format_date invoice.paid_on %></td>
         <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
         <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>

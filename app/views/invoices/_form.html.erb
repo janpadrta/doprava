@@ -32,6 +32,10 @@
 
   <%= render 'form/number_field', form: form, column: :to_be_paid %>
 
+  <hr/>
+
+  <%= render 'form/date_select', form: form, column: :paid_on, options: {include_blank: true} %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

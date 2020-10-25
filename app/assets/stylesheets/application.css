@@ -39,3 +39,15 @@ table.simple, tr.simple, th.simple, td.simple {
     border: 1px solid black;
     border-bottom: 1px solid black !important;
 }
+
+.red {
+    background-color: #ff703b;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: lawngreen;
+}

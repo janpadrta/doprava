@@ -55,6 +55,11 @@
       <strong><%= t 'activerecord.attributes.invoice.user_id' %>:</strong>
       <%= @invoice.user.name %>
     </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.invoice.paid_on' %>:</strong>
+      <%= format_date @invoice.paid_on %>
+    </p>
   </div>
   <div class="rightup">
     <table class="simple">

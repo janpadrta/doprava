@@ -6,6 +6,7 @@
 #  date_of_issue          :date
 #  date_of_taxable_supply :date
 #  due_date               :date
+#  paid_on                :date
 #  payment_type           :text
 #  reference_number       :text
 #  tax_base               :decimal(10, 3)
@@ -36,6 +37,14 @@ class Invoice < ApplicationRecord
   after_initialize :po_inicializaci
   before_create :pred_vytvorenim
 
+  scope :po_splatnosti, -> (date) { where('due_date < ?', date) }
+  scope :spatnost_vyssi_nez, -> (date) { where('due_date >= ?', date) }
+  scope :tyden_do_splatnosti, -> (date) { po_splatnosti(7.days.since(date)) }
+  scope :not_paid, -> { where(paid_on: nil) }
+  scope :paid, -> { where.not(paid_on: nil) }
+
+  scope :issued_this_year, -> { where(date_of_issue: Date.today.beginning_of_year..Date.today.end_of_year) }
+
   def currency
     self.order.currency
   end
@@ -57,7 +66,7 @@ class Invoice < ApplicationRecord
   end
 
   def po_inicializaci
-    self.reference_number ||= "#{Date.today.year}#{Order.count.to_s.rjust(5, "0")}"
+    self.reference_number ||= "#{Date.today.year}#{Invoice.issued_this_year.count.to_s.rjust(5, "0")}"
 
     self.date_of_issue ||= Date.today
     self.date_of_taxable_supply ||= Date.today

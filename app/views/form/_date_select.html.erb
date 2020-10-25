@@ -1,6 +1,7 @@
+<% options = options.present? ? options : {} %>
 <div class="form-group row">
   <%= form.label column, class: 'col-2 col-form-label' %>
   <div class="col-8">
-    <%= form.date_select(column, {}, {class: 'custom-select col-1'} ) %>
+    <%= form.date_select(column, options, {class: 'custom-select col-1'} ) %>
   </div>
 </div>

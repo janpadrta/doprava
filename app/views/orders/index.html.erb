@@ -26,9 +26,19 @@
         <td><%= ano_ne order.fix_price %></td>
         <td><%= format_currency order.full_price, order.currency %></td>
         <td><%= order.customer.name %></td>
-        <td><%= button_to "Dokončeno", order_path(order.id),
+        <td>
+          <%= button_to "Dokončeno", order_path(order.id),
                           params: {:order => { :id => order.id, :finished => true }},
-                          method: :put, data: { confirm: "Opravdu označit zakázku jako dokončenou?" } unless order.finished? %></td>
+                          method: :put, data: { confirm: "Opravdu označit zakázku jako dokončenou?" } unless order.finished? %>
+
+          <% if order.invoices.present? %>
+            <% order.invoices.each do |inv| %>
+              <%= link_to inv.reference_number, inv %>
+            <% end %>
+          <% else %>
+            <%= link_to 'Vytvoř fakturu', controller: :invoices, action: :new, order_id: @order.id %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Opravdu smazat?' } %></td>

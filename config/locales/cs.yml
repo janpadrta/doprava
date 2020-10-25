@@ -44,6 +44,7 @@ cs:
         order_id: 'Objednávka'
         user_id: 'Vystavil'
         customer_id: 'Odběratel'
+        paid_on: 'Zaplaceno dne'
       invoice_line:
         label: 'Označení'
         price: 'Cena'

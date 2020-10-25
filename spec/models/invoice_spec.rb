@@ -6,6 +6,7 @@
 #  date_of_issue          :date
 #  date_of_taxable_supply :date
 #  due_date               :date
+#  paid_on                :date
 #  payment_type           :text
 #  reference_number       :text
 #  tax_base               :decimal(10, 3)
