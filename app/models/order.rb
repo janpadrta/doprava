@@ -66,5 +66,6 @@ class Order < ApplicationRecord
   def default_values
     self.vat_percentage ||= 21.0
     self.finished ||= false
+    self.currency ||= 'Kč'
   end
 end

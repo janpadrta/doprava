@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= Invoice.model_name.human(count: 2) %></h1>
+<h1><%= Invoice.model_name.human(count: 2) %><%= t 'faktura.' + params[:scope].to_s %></h1>
 
 <table>
   <thead>
     <tr>
       <th><%= t 'activerecord.attributes.invoice.reference_number' %></th>
       <th><%= t 'activerecord.attributes.invoice.order_id' %></th>
+      <th><%= t 'activerecord.attributes.invoice.customer_id' %></th>
       <th><%= t 'activerecord.attributes.invoice.date_of_issue' %></th>
       <th><%= t 'activerecord.attributes.invoice.due_date' %></th>
       <th><%= t 'activerecord.attributes.invoice.to_be_paid' %></th>
@@ -20,13 +21,19 @@
       <tr>
         <td><%= invoice.reference_number %></td>
         <td><%= link_to invoice.order.label, invoice.order %></td>
+        <td><%= link_to invoice.customer.name, invoice.customer %></td>
         <td><%= format_date invoice.date_of_issue %></td>
         <td><%= format_date invoice.due_date %></td>
         <td><%= format_currency invoice.to_be_paid, invoice.currency %></td>
         <td><%= format_date invoice.paid_on %></td>
-        <td><%= link_to 'Show', invoice %></td>
-        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to fa_icon('file-pdf 2x', text: "Vytvoř PDF", left: true), generate_invoice_show_path(invoice_id: invoice.id, format: :pdf), target: :blank %>
+        </td>
+        <td>
+          <%= link_to fa_icon('eye 2x'), invoice %>
+          <%= link_to fa_icon('edit 2x'), edit_invoice_path(invoice) %>
+          <%= link_to fa_icon('trash 2x'), invoice, method: :delete, data: { confirm: 'Opravdu tuto fakturu odstranit?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

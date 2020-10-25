@@ -82,8 +82,9 @@
     </table>
   </div>
 </div>
+<br/>
+<br/>cs
 
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Přehled faktur', invoices_path %> |
-<%= link_to 'PDF', generate_invoice_show_path(invoice_id: @invoice.id, format: :pdf), target: :blank %>
+<%= link_to fa_icon('edit 2x'), edit_invoice_path(@invoice) %> |
+<%= link_to fa_icon('list 2x', text: "Přehled faktur", left: true), invoices_path %> |
+<%= link_to fa_icon('file-pdf 2x', text: "Vytvoř PDF", left: true), generate_invoice_show_path(invoice_id: @invoice.id, format: :pdf), target: :blank %>

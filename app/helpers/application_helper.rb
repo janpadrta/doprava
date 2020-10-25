@@ -12,4 +12,9 @@ module ApplicationHelper
     unit = '' if unit.blank?
     number_to_currency(amount, unit: unit, format: '%n %u')
   end
+
+  def invoice_class(invoice)
+    return 'green' if invoice.paid?
+    'red'
+  end
 end

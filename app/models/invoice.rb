@@ -53,6 +53,10 @@ class Invoice < ApplicationRecord
     self.order.vat_percentage
   end
 
+  def paid?
+    self.paid_on.present?
+  end
+
   private
 
   def pred_vytvorenim
@@ -66,7 +70,7 @@ class Invoice < ApplicationRecord
   end
 
   def po_inicializaci
-    self.reference_number ||= "#{Date.today.year}#{Invoice.issued_this_year.count.to_s.rjust(5, "0")}"
+    self.reference_number ||= "#{Date.today.year}#{(Invoice.issued_this_year.count + 1).to_s.rjust(6, "0")}"
 
     self.date_of_issue ||= Date.today
     self.date_of_taxable_supply ||= Date.today

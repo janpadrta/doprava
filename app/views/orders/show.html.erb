@@ -98,10 +98,10 @@
   </div>
   <div class="rightdown">
     <br/><br/>
-    <%= link_to 'Edit', edit_order_path(@order) %>
+    <%= link_to fa_icon('edit 2x'), edit_order_path(@order) %>
     <br/>
-    <%= link_to 'Přehled zakázek', orders_path %>
+    <%= link_to fa_icon('list 2x', text: "Přehled zakázek", left: true), orders_path %>
     <br/>
-    <%= link_to 'Vytvoř fakturu', controller: :invoices, action: :new, order_id: @order.id %>
+    <%= link_to fa_icon('file-alt 2x', text: "Vytvoř fakturu", left: true), controller: :invoices, action: :new, order_id: @order.id %>
   </div>
 </div>

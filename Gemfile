@@ -26,6 +26,7 @@ gem 'select2-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'os'
+gem 'font-awesome-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
