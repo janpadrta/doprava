@@ -9,7 +9,6 @@
       <th><%= t 'activerecord.attributes.order.label' %></th>
       <th><%= t 'activerecord.attributes.order.origin_id' %></th>
       <th><%= t 'activerecord.attributes.order.destination_id' %></th>
-      <th><%= t 'activerecord.attributes.order.fix_price' %></th>
       <th><%= t 'activerecord.attributes.order.full_price' %></th>
       <th><%= t 'activerecord.attributes.order.customer_id' %></th>
       <th colspan="2"><%= link_to 'Nová zakázka', new_order_path %></th>
@@ -23,7 +22,6 @@
         <td><%= order.label %></td>
         <td><%= order.origin.name %></td>
         <td><%= order.destination.name %></td>
-        <td><%= ano_ne order.fix_price %></td>
         <td><%= format_currency order.full_price, order.currency %></td>
         <td><%= order.customer.name %></td>
         <td>
