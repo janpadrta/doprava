@@ -1,7 +1,10 @@
-<h1>Úvodní stránka</h1>
-
 <div class="row">
   <div class="col-6">
+    <div class="row">
+      <div class="col-10">
+        <h2>Faktury po splatnosti</h2>
+      </div>
+    </div>
     <div class="row">
       <div class="col-2"><%= t 'activerecord.attributes.invoice.reference_number' %></div>
       <div class="col-3"><%= t 'activerecord.attributes.invoice.order_id' %></div>
@@ -18,6 +21,11 @@
     <% end %>
   </div>
   <div class="col-6">
+    <div class="row">
+      <div class="col-10">
+        <h2>Faktury splatné do týdne</h2>
+      </div>
+    </div>
     <div class="row">
       <div class="col-2"><%= t 'activerecord.attributes.invoice.reference_number' %></div>
       <div class="col-3"><%= t 'activerecord.attributes.invoice.order_id' %></div>
