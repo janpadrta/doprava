@@ -31,7 +31,7 @@
 FactoryBot.define do
   factory :invoice do
     reference_number { "MyText" }
-    order { nil }
+    # order { order }
     payment_type { "MyText" }
     date_of_issue { "2020-10-19" }
     due_date { "2020-10-19" }
@@ -39,6 +39,6 @@ FactoryBot.define do
     tax_base { "9.99" }
     vat { "9.99" }
     to_be_paid { "9.99" }
-    user { nil }
+    user { user }
   end
 end

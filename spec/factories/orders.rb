@@ -40,13 +40,13 @@ FactoryBot.define do
     load_description { "MyString" }
     load_capacity { "9.99" }
     load_volume { "9.99" }
-    origin_id { 1 }
-    destination_id { 1 }
+    origin_id { customer }
+    destination_id { customer }
     distance { "9.99" }
     fix_price { false }
     price_per_km { "9.99" }
     price { "9.99" }
-    customer { nil }
-    user { nil }
+    customer { customer }
+    user { user }
   end
 end

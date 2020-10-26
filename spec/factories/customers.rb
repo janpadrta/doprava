@@ -19,11 +19,14 @@
 #
 FactoryBot.define do
   factory :customer do
-    name { "MyString" }
-    address { "MyString" }
-    phone { "MyString" }
+    name { "Customer" }
+    street { "Street" }
+    number { "11" }
+    psc { "12345" }
+    city { "City" }
+    phone { "123456789" }
     email { "MyString" }
-    ic { 1 }
-    dic { "MyString" }
+    ic { 123456 }
+    dic { "CZ123456" }
   end
 end

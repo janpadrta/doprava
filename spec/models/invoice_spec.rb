@@ -31,5 +31,12 @@
 require 'rails_helper'
 
 RSpec.describe Invoice, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'shows currency' do
+    # p "AAAAAAAAAAAA"
+    # order = FactoryBot.(:order)
+    # p "BBBBBBBBBBBB"
+    # invoice = FactoryBot.create(:invoice, order_id: order.id)
+    # p "CCCCCCCCCCCC"
+    # assert_equal("Street 11, 12345 City", invoice.currency)
+  end
 end

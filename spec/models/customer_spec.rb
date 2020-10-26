@@ -20,5 +20,8 @@
 require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'shows address' do
+    customer = FactoryBot.create(:customer)
+    assert_equal("Street 11, 12345 City", customer.address)
+  end
 end
