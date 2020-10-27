@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     scope = params[:scope] || 'active'
-    @orders = Order.includes(:origin, :destination, :customer, :user).send(scope).order(:datum).all
+    @orders = Order.includes(:origin, :destination, :customer, :user, :invoices).send(scope).order(:datum).all
   end
 
   # GET /orders/1
@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to orders_path(scope: 'active'), notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

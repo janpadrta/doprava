@@ -44,7 +44,7 @@ cs:
         tax_base: 'Základ daně'
         to_be_paid: 'Celkem k úhradě'
         vat: 'DPH'
-        order_id: 'Objednávka'
+        order_id: 'Zakázka'
         user_id: 'Vystavil'
         customer_id: 'Odběratel'
         paid_on: 'Zaplaceno dne'
@@ -72,7 +72,7 @@ cs:
         destination_id: "Cíl cesty"
         origin_id: "Původ"
         user_id: "zadal"
-        full_price: "Celková cena"
+        full_price: "Celková cena bez DPH"
         vat_percentage: "Sazba daně"
       user:
         admin: 'Admin'

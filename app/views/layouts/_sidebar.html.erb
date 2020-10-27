@@ -44,7 +44,8 @@
       <% if current_user&.admin? %>
         <p id="current_users"> Aktivní uživatelé: <%= current_users_list %></p>
       <% end %>
-      <p class="copyright">Copyright &copy; 2020 DOPAJO
+      <p class="copyright">Copyright &copy; 2020 DOPAJO</p>
+      <p class="text-center">Aktualizováno: <%= `git log -1 --format=%cd`.to_datetime.strftime("%d.%m.%Y&nbsp;%T").html_safe %></p>
 <!--        <br>Designed by <a rel="nofollow" href="https://www.facebook.com/templatemo">Template Mo</a></p>-->
     </footer>
 

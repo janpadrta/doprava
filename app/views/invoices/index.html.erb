@@ -21,7 +21,7 @@
   <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= invoice.reference_number %></td>
+        <td class="<%= invoice_class(invoice) %>"><%= invoice.reference_number %></td>
         <td><%= link_to invoice.order.label, invoice.order %></td>
         <td><%= link_to invoice.customer.name, invoice.customer %></td>
         <td><%= format_date invoice.date_of_issue %></td>

@@ -10,8 +10,7 @@
       <th><%= t 'activerecord.attributes.order.origin_id' %></th>
       <th><%= t 'activerecord.attributes.order.destination_id' %></th>
       <th><%= t 'activerecord.attributes.order.full_price' %></th>
-      <th><%= t 'activerecord.attributes.order.customer_id' %></th>
-      <th colspan="2"><%= link_to 'Nová zakázka', new_order_path %></th>
+      <th colspan="3"><%= link_to 'Nová zakázka', new_order_path %></th>
     </tr>
   </thead>
 
@@ -20,10 +19,15 @@
       <tr>
         <td><%= format_date order.datum %></td>
         <td><%= order.label %></td>
-        <td><%= order.origin.name %></td>
-        <td><%= order.destination.name %></td>
+        <td>
+          <%= order.origin.name %>
+          <p style="margin-top: 0"><%= order.origin.city %></p>
+        </td>
+        <td>
+          <%= order.destination.name %>
+          <p style="margin-top: 0"><%= order.destination.city %></p>
+        </td>
         <td><%= format_currency order.full_price, order.currency %></td>
-        <td><%= order.customer.name %></td>
         <td>
           <% unless order.finished? %>
             <%= button_to order_path(order.id),
@@ -45,7 +49,7 @@
         <td>
           <%= link_to fa_icon('eye 2x'), order %>&nbsp;
           <%= link_to fa_icon('edit 2x'), edit_order_path(order) %>&nbsp;
-          <%= link_to fa_icon('trash 2x'), order, method: :delete, data: { confirm: 'Opravdu smazat?' } %>
+          <%= link_to fa_icon('trash 2x'), order, method: :delete, data: { confirm: 'Opravdu smazat?' } if order.invoices.blank? %>
         </td>
       </tr>
     <% end %>

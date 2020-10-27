@@ -14,7 +14,8 @@ module ApplicationHelper
   end
 
   def invoice_class(invoice)
-    return 'green' if invoice.paid?
-    'red'
+    return 'red' if invoice.due_date < Date.today
+    return 'yellow' if invoice.due_date.between?(Date.today, 1.week.since)
+    'green'
   end
 end
