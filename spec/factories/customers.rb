@@ -3,10 +3,12 @@
 # Table name: customers
 #
 #  id           :bigint           not null, primary key
+#  bank         :string
 #  bank_account :string
 #  city         :string
 #  dic          :text
 #  email        :text
+#  iban         :string
 #  ic           :integer
 #  kind         :integer
 #  name         :text             not null
@@ -14,6 +16,7 @@
 #  phone        :text
 #  psc          :string
 #  street       :string
+#  swift        :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

@@ -15,6 +15,11 @@
   <%= @user.phone %>
 </p>
 
+<p>
+  <strong>Web:</strong>
+  <%= @user.web %>
+</p>
+
 <% if current_user.manager_or_admin? %>
   <p>
     <strong>Manager:</strong>

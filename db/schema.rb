@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 15) do
+ActiveRecord::Schema.define(version: 17) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 15) do
     t.string "number"
     t.string "psc"
     t.string "city"
+    t.string "bank"
+    t.string "swift"
+    t.string "iban"
   end
 
   create_table "invoice_lines", force: :cascade do |t|
@@ -108,6 +111,7 @@ ActiveRecord::Schema.define(version: 15) do
     t.datetime "last_logout_at"
     t.datetime "last_activity_at"
     t.text "last_login_from_ip_address"
+    t.string "web"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"

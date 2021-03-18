@@ -34,6 +34,21 @@
   <strong><%= t 'activerecord.attributes.customer.bank_account' %>:</strong>
   <%= @customer.bank_account %>
 </p>
+
+<p>
+  <strong><%= t 'activerecord.attributes.customer.bank' %>:</strong>
+  <%= @customer.bank %>
+</p>
+
+<p>
+  <strong><%= t 'activerecord.attributes.customer.iban' %>:</strong>
+  <%= @customer.iban %>
+</p>
+
+<p>
+  <strong><%= t 'activerecord.attributes.customer.swift' %>:</strong>
+  <%= @customer.swift %>
+</p>
 <br/>
 <br/>
 <%= link_to 'Edit', edit_customer_path(@customer) %> |

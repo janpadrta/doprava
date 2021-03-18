@@ -28,6 +28,12 @@
 
   <%= render 'form/text_field', form: form, column: :bank_account %>
 
+  <%= render 'form/text_field', form: form, column: :bank %>
+
+  <%= render 'form/text_field', form: form, column: :iban %>
+
+  <%= render 'form/text_field', form: form, column: :swift %>
+
   <%= render 'form/select', form: form, column: :kind, options_var: options_for_select([['JH Trans', 0], ['Zadavatel', 1], ['Firma', 2]], @customer.kind) %>
 
   <div class="actions">

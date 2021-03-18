@@ -35,6 +35,9 @@ cs:
         psc: 'PSČ'
         city: 'Město'
         bank_account: 'Bankovní účet'
+        bank: 'Banka'
+        iban: 'IBAN'
+        swift: 'SWIFT'
       invoice:
         date_of_issue: 'Datum vydání'
         date_of_taxable_supply: 'Datum zdanitelného plnění'

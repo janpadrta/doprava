@@ -22,6 +22,7 @@
 #  reset_password_token_expires_at     :datetime
 #  salt                                :text
 #  unlock_token                        :text
+#  web                                 :string
 #  created_at                          :datetime         not null
 #  updated_at                          :datetime         not null
 #

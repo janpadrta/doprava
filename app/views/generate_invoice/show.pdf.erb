@@ -85,7 +85,7 @@
   </tr>
   <tr>
     <td class="left_d">&nbsp;</td>
-    <td colspan="2">779 00 Olomouvc</td>
+    <td colspan="2"></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td class="left_d">&nbsp;</td>
@@ -140,14 +140,14 @@
   <tr>
     <td class="left_d top_d">Banka:</td>
     <td class="top_d">&nbsp;</td>
-    <td class="left bottom top_d right_d" colspan="3">FIO banka</td>
+    <td class="left bottom top_d right_d" colspan="3"><%= jhtrans_obj.bank %></td>
     <td class="left_d top_d" colspan="4">Forma úhrady:</td>
-    <td class="left bottom top_d right_d" colspan="2">převodem</td>
+    <td class="left bottom top_d right_d" colspan="2"><%= @invoice.payment_type %></td>
   </tr>
   <tr>
     <td class="left_d">SWIFT:</td>
     <td>&nbsp;</td>
-    <td class="left" colspan="3">FIOBCZPPXXX</td>
+    <td class="left" colspan="3"><%= jhtrans_obj.swift %></td>
     <td class="left_d">&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -156,7 +156,7 @@
     <td class="right_d">&nbsp;</td>
   </tr>
   <tr>
-    <td class="left_d top bottom" colspan="5"> IBAN: CZ40 2010 0000 0026 0187 9451</td>
+    <td class="left_d top bottom" colspan="5"> IBAN: <%= jhtrans_obj.iban %></td>
     <td class="left_d" colspan="4">Datum vystavení:</td>
     <td class="left top bottom right_d" colspan="2"><%= format_date @invoice.date_of_issue %></td>
   </tr>
@@ -174,7 +174,7 @@
     <td class="left bottom right_d" colspan="2"><%= format_date @invoice.date_of_taxable_supply %></td>
   </tr>
   <tr>
-    <td class="left_d bottom" colspan="5">Označení objednávky: OO-000194/21MB</td>
+    <td class="left_d bottom" colspan="5">Označení objednávky: <%= @invoice.order.label %></td>
     <td class="bottom_d left_d right_d" colspan="6">&nbsp;</td>
   </tr>
   <tr>
@@ -335,7 +335,7 @@
   </tr>
   <tr>
     <td class="left_d">Web:</td>
-    <td colspan="3">jhtrans.cz</td>
+    <td colspan="3"><%= @invoice.user.web %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>

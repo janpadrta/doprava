@@ -21,6 +21,8 @@
 
   <%= render 'form/text_field', form: form, column: :phone %>
 
+  <%= render 'form/text_field', form: form, column: :web %>
+
   <% if current_user.manager_or_admin? %>
 
     <%= render 'form/check_box', form: form, column: :manager %>
