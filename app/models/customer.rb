@@ -5,13 +5,13 @@
 #  id           :bigint           not null, primary key
 #  bank_account :string
 #  city         :string
-#  dic          :string
-#  email        :string
+#  dic          :text
+#  email        :text
 #  ic           :integer
 #  kind         :integer
-#  name         :string           not null
+#  name         :text             not null
 #  number       :string
-#  phone        :string
+#  phone        :text
 #  psc          :string
 #  street       :string
 #  created_at   :datetime         not null
@@ -21,7 +21,7 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :invoices
 
-  scope :dopajo, -> { where(kind: 0) }
+  scope :jhtrans, -> { where(kind: 0) }
   scope :zadavatele, -> { where(kind: 1) }
   scope :firma, -> { where(kind: 2) }
 

@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 15) do
   enable_extension "plpgsql"
 
   create_table "customers", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "phone"
-    t.string "email"
+    t.text "name", null: false
+    t.text "phone"
+    t.text "email"
     t.integer "ic"
-    t.string "dic"
+    t.text "dic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "kind"
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 15) do
 
   create_table "orders", force: :cascade do |t|
     t.date "datum"
-    t.string "load_type"
-    t.string "load_description"
+    t.text "load_type"
+    t.text "load_description"
     t.decimal "load_capacity", precision: 10, scale: 3
     t.decimal "load_volume", precision: 10, scale: 3
     t.integer "origin_id"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 15) do
     t.boolean "fix_price"
     t.decimal "price_per_km", precision: 10, scale: 3
     t.decimal "price", precision: 10, scale: 3
-    t.integer "customer_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "customer_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "currency"
@@ -87,27 +87,27 @@ ActiveRecord::Schema.define(version: 15) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "crypted_password"
-    t.string "salt"
-    t.string "name"
-    t.string "phone"
+    t.text "email", null: false
+    t.text "crypted_password"
+    t.text "salt"
+    t.text "name"
+    t.text "phone"
     t.boolean "admin"
     t.boolean "manager"
     t.boolean "driver"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "reset_password_token"
+    t.text "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.integer "access_count_to_reset_password_page", default: 0
     t.integer "failed_logins_count", default: 0
     t.datetime "lock_expires_at"
-    t.string "unlock_token"
+    t.text "unlock_token"
     t.datetime "last_login_at"
     t.datetime "last_logout_at"
     t.datetime "last_activity_at"
-    t.string "last_login_from_ip_address"
+    t.text "last_login_from_ip_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"

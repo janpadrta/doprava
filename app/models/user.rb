@@ -5,23 +5,23 @@
 #  id                                  :bigint           not null, primary key
 #  access_count_to_reset_password_page :integer          default(0)
 #  admin                               :boolean
-#  crypted_password                    :string
+#  crypted_password                    :text
 #  driver                              :boolean
-#  email                               :string           not null
+#  email                               :text             not null
 #  failed_logins_count                 :integer          default(0)
 #  last_activity_at                    :datetime
 #  last_login_at                       :datetime
-#  last_login_from_ip_address          :string
+#  last_login_from_ip_address          :text
 #  last_logout_at                      :datetime
 #  lock_expires_at                     :datetime
 #  manager                             :boolean
-#  name                                :string
-#  phone                               :string
+#  name                                :text
+#  phone                               :text
 #  reset_password_email_sent_at        :datetime
-#  reset_password_token                :string
+#  reset_password_token                :text
 #  reset_password_token_expires_at     :datetime
-#  salt                                :string
-#  unlock_token                        :string
+#  salt                                :text
+#  unlock_token                        :text
 #  created_at                          :datetime         not null
 #  updated_at                          :datetime         not null
 #

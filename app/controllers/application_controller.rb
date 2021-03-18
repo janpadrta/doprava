@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method
-  def dopajo
-    Customer.dopajo.first
+  def jhtrans
+    Customer.jhtrans.first
   end
 
   helper_method :current_users_list

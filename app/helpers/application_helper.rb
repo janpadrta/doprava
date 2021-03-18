@@ -8,9 +8,9 @@ module ApplicationHelper
     test ? 'Ano' : 'Ne'
   end
 
-  def format_currency(amount, unit)
+  def format_currency(amount, unit, precision = 2)
     unit = '' if unit.blank?
-    number_to_currency(amount, unit: unit, format: '%n %u')
+    number_to_currency(amount, unit: unit, format: '%n %u', precision: precision)
   end
 
   def invoice_class(invoice)

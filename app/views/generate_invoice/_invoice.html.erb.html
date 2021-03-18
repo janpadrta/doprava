@@ -1,4 +1,4 @@
-<% dopajo_obj = Customer.dopajo.first %>
+<% jhtrans_obj = Customer.jhtrans.first %>
 <div id="app" class="container invoice">
     <div class="row">
         <!-- data -->
@@ -36,7 +36,7 @@
                 <p>1234567890988</p>
             </div>
             <div class="data-box align-text-bottom">
-                <h1 class="font-weight-bold text-center"><%= dopajo_obj.name %></h1>
+                <h1 class="font-weight-bold text-center"><%= jhtrans_obj.name %></h1>
             </div>
         </div>
         <!-- end data -->
@@ -49,10 +49,10 @@
                 <div class="row">
                     <div class="col-6 from">
                         <span class="d-block font-weight-light">DODAVATEL:</span>
-                        <h3><%= dopajo_obj.name %></h3>
-                        <span class="d-block font-weight-light"><%= dopajo_obj.address %></span>
-                        <span class="d-block font-weight-light"><%= dopajo_obj.phone %></span>
-                        <span class="d-block font-weight-light"><%= dopajo_obj.email %></span>
+                        <h3><%= jhtrans_obj.name %></h3>
+                        <span class="d-block font-weight-light"><%= jhtrans_obj.address %></span>
+                        <span class="d-block font-weight-light"><%= jhtrans_obj.phone %></span>
+                        <span class="d-block font-weight-light"><%= jhtrans_obj.email %></span>
                     </div>
                     <div class="col-6 to">
                         <span class="d-block font-weight-light">ZÁKAZNÍK:</span>

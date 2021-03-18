@@ -10,18 +10,18 @@
 #  fix_price        :boolean
 #  label            :text
 #  load_capacity    :decimal(10, 3)
-#  load_description :string
-#  load_type        :string
+#  load_description :text
+#  load_type        :text
 #  load_volume      :decimal(10, 3)
 #  price            :decimal(10, 3)
 #  price_per_km     :decimal(10, 3)
 #  vat_percentage   :decimal(10, 3)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  customer_id      :integer          not null
+#  customer_id      :bigint           not null
 #  destination_id   :integer
 #  origin_id        :integer
-#  user_id          :integer          not null
+#  user_id          :bigint           not null
 #
 # Indexes
 #

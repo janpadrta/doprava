@@ -1,116 +1,374 @@
-<% dopajo_obj = Customer.dopajo.first %>
+<% jhtrans_obj = Customer.jhtrans.first %>
 <br/>
-<br/>
-<table class="tg">
+
+<style type="text/css">
+    table.tableizer-table {
+        font-size: 18px;
+        border: 0px solid white;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 30px;
+        margin-right: 20px;
+    }
+
+    .tableizer-table td {
+        padding-left: 15px;
+        margin: 3px;
+        border: 0px solid white;
+    }
+
+    .tableizer-table th {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    <% [:left, :right, :top, :bottom].each do |dir| %>
+      .<%= dir %> { border-<%= dir %>: 1px solid black !important; }
+      .<%= dir %>_d { border-<%= dir %>: 3px solid black !important; }
+    <% end %>
+</style>
+<table class="tableizer-table">
   <tbody>
   <tr>
-    <td class="tg-h25s" colspan="12" style="font-size: 35px">FAKTURA</td>
+    <th colspan="11" class="left_d top_d right_d bottom_d">FAKTURA - DAŇOVÝ DOKLAD č. <%= @invoice.reference_number %></th>
   </tr>
   <tr>
-    <td class="tg-zv4m" colspan="4" style="font-size: 18px;">DATUM SPLATNOSTI</td>
-    <td class="tg-8jgo" colspan="4" style="font-size: 18px;">ČÍSLO ÚČTU</td>
-    <td class="tg-ofj5" colspan="4" style="font-size: 18px;">VS / ČÍSLO DOKLADU</td>
+    <% wid = '250px' %>
+    <td width="<%= wid %>" class="left_d">&nbsp;</td>
+    <td width="<%= wid %>">&nbsp;</td>
+    <td width="<%= wid %>">&nbsp;</td>
+    <td width="<%= wid %>">&nbsp;</td>
+    <td width="<%= wid %>">&nbsp;</td>
+    <td width="<%= wid %>" class="left_d">&nbsp;</td>
+    <td width="<%= wid %>">&nbsp;</td>
+    <td width="<%= wid %>">&nbsp;</td>
+    <td width="<%= wid %>">&nbsp;</td>
+    <td width="<%= wid %>">&nbsp;</td>
+    <td width="<%= wid %>" class="right_d">&nbsp;</td>
   </tr>
   <tr>
-    <td class="tg-zv4m" colspan="4" style="font-weight: bold; font-size: 24px"><%= format_date @invoice.due_date %></td>
-    <td class="tg-8jgo" colspan="4" style="font-weight: bold; font-size: 24px"><%= dopajo_obj.bank_account %></td>
-    <td class="tg-ofj5" colspan="4" style="font-weight: bold; font-size: 24px"><%= @invoice.reference_number %></td>
+    <td colspan="2" class="left_d">Dodavatel:</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td colspan="2" class="left_d">Objednatel:</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
   </tr>
   <tr>
-    <td class="tg-zv4m" colspan="12"></td>
+    <td class="left_d">Název:</td>
+    <td colspan="2"><%= jhtrans_obj.name %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left_d">Název:</td>
+    <td colspan="4"><%= @invoice.customer.name %></td>
+    <td class="right_d">&nbsp;</td>
   </tr>
   <tr>
-    <td class="tg-zv4m" colspan="4" style="background-color: lightgray; border-color: lightgray;">
-      <p class="velikost_18">DODAVATEL</p>
-      <%= dopajo_obj.name %><br/>
-      <%= "#{dopajo_obj.street} #{dopajo_obj.number}" %><br/>
-      <%= "#{dopajo_obj.psc} #{dopajo_obj.city}" %><br/>
-      IČ: <%= dopajo_obj.ic %><br/>
-      DIČ: <%= dopajo_obj.dic %><br/>
-    </td>
-    <td class="tg-zv4m" colspan="4" style="background-color: lightgray; border-color: lightgray;">
-      <p class="velikost_18">ODBĚRATEL</p>
-      <%= @invoice.customer.name %><br/>
-      <%= "#{@invoice.customer.street} #{@invoice.customer.number}" %><br/>
-      <%= "#{@invoice.customer.psc} #{@invoice.customer.city}" %><br/>
-      IČ: <%= @invoice.customer.ic %><br/>
-      DIČ: <%= @invoice.customer.dic %><br/>
-    </td>
-    <td class="tg-ofj5" colspan="4" style="background-color: lightgray; border-color: lightgray;">
-      <p class="velikost_18">DATUM VYSTAVENÍ</p>
-      <%= format_date @invoice.date_of_issue %><br/><br/>
-      <p class="velikost_18">DATUM ZDANITELNÉHO PLNĚNÍ</p>
-      <%= format_date @invoice.date_of_taxable_supply %><br/>
-    </td>
+    <td class="left_d">Adresa:</td>
+    <td colspan="2"><%= "#{jhtrans_obj.street} #{jhtrans_obj.number}" %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left_d">Adresa:</td>
+    <td colspan="4"><%= "#{@invoice.customer.street} #{@invoice.customer.number}" %></td>
+    <td class="right_d">&nbsp;</td>
   </tr>
   <tr>
-    <td class="tg-73oq" colspan="12" style="border-left-color: white; border-right-color: white;"></td>
+    <td class="left_d">&nbsp;</td>
+    <td colspan="2"><%= "#{jhtrans_obj.psc} #{jhtrans_obj.city}" %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left_d">&nbsp;</td>
+    <td colspan="4"><%= "#{@invoice.customer.psc} #{@invoice.customer.city}" %></td>
+    <td class="right_d">&nbsp;</td>
   </tr>
   <tr>
-    <td class="tg-73oq" colspan="4" style="font-size: 15px">POLOŽKA</td>
-    <td class="tg-3z1b" colspan="2" style="font-size: 15px">CENA</td>
-    <td class="tg-3z1b" colspan="2" style="font-size: 15px">% DPH</td>
-    <td class="tg-3z1b" colspan="2" style="font-size: 15px">DPH</td>
-    <td class="tg-3z1b" colspan="2" style="font-size: 15px">CELKEM S DPH</td>
+    <td class="left_d">&nbsp;</td>
+    <td colspan="2">779 00 Olomouvc</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left_d">&nbsp;</td>
+    <td colspan="3">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">IČ:</td>
+    <td colspan="2"><%= jhtrans_obj.ic %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left_d">IČ:</td>
+    <td colspan="4"><%= @invoice.customer.ic %></td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">DIČ:</td>
+    <td colspan="2"><%= jhtrans_obj.dic %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left_d">DIČ:</td>
+    <td colspan="4"><%= @invoice.customer.dic %></td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d top_d">Banka:</td>
+    <td class="top_d">&nbsp;</td>
+    <td class="left bottom top_d right_d" colspan="3">FIO banka</td>
+    <td class="left_d top_d" colspan="4">Forma úhrady:</td>
+    <td class="left bottom top_d right_d" colspan="2">převodem</td>
+  </tr>
+  <tr>
+    <td class="left_d">SWIFT:</td>
+    <td>&nbsp;</td>
+    <td class="left" colspan="3">FIOBCZPPXXX</td>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d top bottom" colspan="5"> IBAN: CZ40 2010 0000 0026 0187 9451</td>
+    <td class="left_d" colspan="4">Datum vystavení:</td>
+    <td class="left top bottom right_d" colspan="2"><%= format_date @invoice.date_of_issue %></td>
+  </tr>
+  <tr>
+    <td class="left_d" colspan="2">Číslo účtu:</td>
+    <td class="left bottom" colspan="3"><%= jhtrans_obj.bank_account %></td>
+    <td class="left_d" colspan="4">Datum splatnosti:</td>
+    <td class="left bottom right_d" colspan="2"><%= format_date @invoice.due_date %></td>
+  </tr>
+  <tr>
+    <td class="left_d bottom">VS</td>
+    <td class="bottom">&nbsp;</td>
+    <td class="left bottom" colspan="3"><%= @invoice.reference_number %></td>
+    <td class="left_d" colspan="4"> Datum zdanitelného plnění:</td>
+    <td class="left bottom right_d" colspan="2"><%= format_date @invoice.date_of_taxable_supply %></td>
+  </tr>
+  <tr>
+    <td class="left_d bottom" colspan="5">Označení objednávky: OO-000194/21MB</td>
+    <td class="bottom_d left_d right_d" colspan="6">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d bottom" colspan="4"></td>
+    <td class="bottom left" colspan="2">Cena</td>
+    <td class="bottom left">% DPH</td>
+    <td class="bottom left" colspan="2">DPH</td>
+    <td class="bottom left right_d" colspan="2">Celkem s DPH</td>
+  </tr>
+  <tr class="left_d">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left">&nbsp;</td>
+    <td class="left" colspan="2">&nbsp;</td>
+    <td class="left">&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
   </tr>
   <% @invoice.invoice_lines.each do |line| %>
     <tr>
-      <td class="tg-73oq" colspan="4"><%= line.label %></td>
-      <td class="tg-3z1b" colspan="2"><%= format_currency line.price, @invoice.currency %></td>
-      <td class="tg-3z1b" colspan="2"><%= format_currency line.vat_percent, '%' %></td>
-      <td class="tg-3z1b" colspan="2"><%= format_currency line.vat, @invoice.currency %></td>
-      <td class="tg-3z1b" colspan="2"><%= format_currency line.price_with_vat, @invoice.currency %></td>
+      <td class="left_d" colspan="4"><%= line.label %></td>
+      <td class="left" colspan="2" align="right" style="padding-right: 15px"><%= format_currency line.price, @invoice.currency %></td>
+      <td class="left" align="right" style="padding-right: 15px"><%= format_currency line.vat_percent, '%', 0 %></td>
+      <td class="left" align="right" style="padding-right: 15px" colspan="2"><%= format_currency line.vat, @invoice.currency %></td>
+      <td class="left right_d" colspan="2" align="right" style="padding-right: 15px"><%= format_currency line.price_with_vat, @invoice.currency %></td>
     </tr>
   <% end %>
-  <% 5.times do %>
-    <tr>
-      <td class="tg-zv4m" colspan="12"></td>
+  <% 8.times do %>
+    <tr class="left_d">
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td class="left">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td class="left">&nbsp;</td>
+      <td class="left" colspan="2">&nbsp;</td>
+      <td class="left">&nbsp;</td>
+      <td class="right_d">&nbsp;</td>
     </tr>
   <% end %>
-
-  <tr>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
+  <tr class="left_d">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="left bottom">&nbsp;</td>
+    <td class="bottom">&nbsp;</td>
+    <td class="left bottom">&nbsp;</td>
+    <td class="left bottom" colspan="2">&nbsp;</td>
+    <td class="left bottom">&nbsp;</td>
+    <td class="bottom right_d">&nbsp;</td>
+  </tr>
+  <tr class="left_d">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
   </tr>
   <tr>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m" colspan="3">SOUČET POLOŽEK</td>
-    <td class="tg-ofj5" colspan="3"><%= format_currency @invoice.tax_base, @invoice.currency %></td>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td colspan="3">Základ DPH:</td>
+    <td class="right_d" colspan="2" align="right" style="padding-right: 15px"><%= format_currency @invoice.tax_base, @invoice.currency %></td>
   </tr>
   <tr>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m" colspan="3">DPH</td>
-    <td class="tg-ofj5" colspan="3"><%= format_currency @invoice.vat, @invoice.currency %></td>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td colspan="3">DPH: 21%</td>
+    <td class="right_d" colspan="2" align="right" style="padding-right: 15px"><%= format_currency @invoice.vat, @invoice.currency %></td>
   </tr>
   <tr>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m"></td>
-    <td class="tg-zv4m" colspan="3" style="font-weight: bold; font-size: 25px">CELKEM S DPH</td>
-    <td class="tg-ofj5" colspan="3" style="font-weight: bold; font-size: 25px"><%= format_currency @invoice.to_be_paid, @invoice.currency %></td>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td colspan="3">Celkem k úhradě:</td>
+    <td class="right_d" colspan="2" align="right" style="padding-right: 15px"><%= format_currency @invoice.to_be_paid, @invoice.currency %></td>
+  </tr>
+  <tr>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">Vystavil:</td>
+    <td colspan="3"><%= @invoice.user.name %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">Telefon:</td>
+    <td colspan="3"><%= @invoice.user.phone %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">E-mail:</td>
+    <td colspan="3"><%= @invoice.user.email %></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">Web:</td>
+    <td colspan="3">jhtrans.cz</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="left_d">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class="right_d">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="bottom_d left_d">&nbsp;</td>
+    <td class="bottom_d">&nbsp;</td>
+    <td class="bottom_d">&nbsp;</td>
+    <td class="bottom_d">&nbsp;</td>
+    <td class="bottom_d">&nbsp;</td>
+    <td class="bottom_d">&nbsp;</td>
+    <td class="bottom_d">&nbsp;</td>
+    <td class="bottom_d">&nbsp;</td>
+    <td class="bottom_d">&nbsp;</td>
+    <td class="bottom_d">&nbsp;</td>
+    <td class="bottom_d right_d">&nbsp;</td>
   </tr>
   </tbody>
 </table>
