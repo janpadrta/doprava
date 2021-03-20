@@ -1,0 +1,23 @@
+<%= form_with(model: car, local: true) do |form| %>
+  <% if car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+        <% car.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render 'form/text_field', form: form, column: :name %>
+
+  <%= render 'form/text_field', form: form, column: :spz %>
+
+  <%= render 'form/check_box', form: form, column: :active %>
+
+  <div class="actions">
+    <%= form.submit 'Uložit' %>
+  </div>
+<% end %>

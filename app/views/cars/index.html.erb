@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= Car.model_name.human(count: 2) %></h1>
+
+<table class="niceTable">
+  <thead>
+    <tr>
+      <th><%= t 'activerecord.attributes.car.name' %></th>
+      <th><%= t 'activerecord.attributes.car.spz' %></th>
+      <th><%= t 'activerecord.attributes.car.active' %></th>
+      <th colspan="3"><%= link_to 'Přidat auto', new_car_path %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.name %></td>
+        <td><%= car.spz %></td>
+        <td><%= ano_ne car.active %></td>
+        <td>
+          <%= link_to fa_icon('eye 2x'), car %>
+          <%= link_to fa_icon('edit 2x'), edit_car_path(car) %>
+          <%= link_to fa_icon('trash 2x'), car, method: :delete, data: { confirm: 'Opravdu smazat?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

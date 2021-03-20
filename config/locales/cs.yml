@@ -7,6 +7,9 @@ cs:
     not_paid: ' nezaplacené'
   activerecord:
     models:
+      car:
+        one: Auto
+        other: Auta
       customer:
         one: Zákazník
         other: Zákazníci
@@ -23,6 +26,10 @@ cs:
         one: Uživatel
         other: Uživatelé
     attributes:
+      car:
+        name: 'Označení'
+        spz: 'SPZ'
+        active: 'aktivní'
       customer:
         address: 'Adresa'
         dic: 'DIČ'

@@ -17,6 +17,8 @@
             <li><strong><%= link_to 'Ukončené zakázky', orders_path(scope: 'finished') %></strong></li>
             <li><strong><%= link_to 'Faktury', invoices_path(scope: 'not_paid') %></strong></li>
             <li><strong><%= link_to 'Faktury - zaplacené', invoices_path(scope: 'paid') %></strong></li>
+            <li><strong><%= link_to 'Auta', cars_path %></strong></li>
+            <hr/>
           <% end %>
           <% if current_user.driver_or_manager_or_admin? %>
 <!--            <li>dri prvni</li>-->
