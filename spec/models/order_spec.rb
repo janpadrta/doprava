@@ -18,6 +18,7 @@
 #  vat_percentage   :decimal(10, 3)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  car_id           :integer
 #  customer_id      :bigint           not null
 #  destination_id   :integer
 #  origin_id        :integer

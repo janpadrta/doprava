@@ -84,6 +84,7 @@ cs:
         user_id: "zadal"
         full_price: "Celková cena bez DPH"
         vat_percentage: "Sazba daně"
+        car_id: 'Auto'
       user:
         admin: 'Admin'
         driver: 'Řidič'

@@ -42,6 +42,8 @@
       <%= render 'form/text_field', form: form, column: :load_capacity %>
 
       <%= render 'form/text_field', form: form, column: :load_volume %>
+
+      <%= render 'form/select', form: form, column: :car_id, options_var: options_from_collection_for_select(Car.active.all, 'id', 'name', @order.car_id) %>
       <br/>
       <br/>
       <%= render 'form/check_box', form: form, column: :finished %>

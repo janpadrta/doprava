@@ -10,4 +10,8 @@
 #  updated_at :datetime         not null
 #
 class Car < ApplicationRecord
+  has_many :orders
+
+  scope :inactive, -> { where(active: false) }
+  scope :active, -> { where(active: true) }
 end

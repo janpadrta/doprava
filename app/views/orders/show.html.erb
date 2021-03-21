@@ -95,6 +95,11 @@
       <strong><%= t 'activerecord.attributes.order.full_price' %>:</strong>
       <%= format_currency @order.full_price, @order.currency %>
     </p>
+
+    <p>
+      <strong><%= t 'activerecord.attributes.order.car_id' %>:</strong>
+      <%= link_to @order.car.name, @order.car %>
+    </p>
   </div>
   <div class="rightdown">
     <br/><br/>

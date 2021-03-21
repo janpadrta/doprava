@@ -18,6 +18,7 @@
 #  vat_percentage   :decimal(10, 3)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  car_id           :integer
 #  customer_id      :bigint           not null
 #  destination_id   :integer
 #  origin_id        :integer
@@ -39,6 +40,7 @@ class Order < ApplicationRecord
   belongs_to :origin, foreign_key: :origin_id, class_name: 'Customer'
   belongs_to :destination, foreign_key: :destination_id, class_name: 'Customer'
   has_many :invoices
+  belongs_to :car
 
   scope :finished, -> { where(finished: true) }
   scope :active, -> { where(finished: false) }
