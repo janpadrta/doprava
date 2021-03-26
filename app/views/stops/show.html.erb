@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @stop.type %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @stop.label %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @stop.street %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @stop.number %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @stop.zip_code %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @stop.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @stop.country %>
+</p>
+
+<p>
+  <strong>Way back:</strong>
+  <%= @stop.way_back %>
+</p>
+
+<%= link_to 'Edit', edit_stop_path(@stop) %> |
+<%= link_to 'Back', stops_path %>

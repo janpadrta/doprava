@@ -52,3 +52,28 @@ table.simple, tr.simple, th.simple, td.simple {
 .green {
     background-color: lawngreen;
 }
+
+.loading {
+    background-color: lightgreen;
+}
+.back_loading {
+    background-color: green;
+}
+.unloading {
+    background-color: lightcoral;
+}
+.back_unloading {
+    background-color: coral;
+}
+
+fieldset {
+    background-color: #ffb4b4;
+    padding: 10px;
+}
+
+legend {
+    background-color: gray;
+    color: white;
+    font-size: 15px;
+    padding: 5px 10px;
+}

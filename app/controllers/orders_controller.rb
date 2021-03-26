@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @stop = @order.stops.new
   end
 
   # POST /orders
@@ -30,7 +31,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to edit_order_path @order, notice: 'Zakázka byla uložena.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

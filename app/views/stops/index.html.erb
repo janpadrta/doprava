@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Stops</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Label</th>
+      <th>Street</th>
+      <th>Number</th>
+      <th>Zip code</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Way back</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stops.each do |stop| %>
+      <tr>
+        <td><%= stop.type %></td>
+        <td><%= stop.label %></td>
+        <td><%= stop.street %></td>
+        <td><%= stop.number %></td>
+        <td><%= stop.zip_code %></td>
+        <td><%= stop.city %></td>
+        <td><%= stop.country %></td>
+        <td><%= stop.way_back %></td>
+        <td><%= link_to 'Show', stop %></td>
+        <td><%= link_to 'Edit', edit_stop_path(stop) %></td>
+        <td><%= link_to 'Destroy', stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stop', new_stop_path %>

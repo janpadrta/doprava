@@ -6,6 +6,7 @@
 #  bank         :string
 #  bank_account :string
 #  city         :string
+#  country      :string
 #  dic          :text
 #  email        :text
 #  iban         :string
@@ -15,8 +16,10 @@
 #  number       :string
 #  phone        :text
 #  psc          :string
+#  raal         :string
 #  street       :string
 #  swift        :string
+#  timocom      :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
@@ -31,7 +34,7 @@ class Customer < ApplicationRecord
   after_initialize :default_values
 
   def address
-    "#{street} #{number}, #{psc} #{city}"
+    "#{street} #{number}, #{psc} #{city}, #{country&.upcase}"
   end
 
   private

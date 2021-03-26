@@ -22,6 +22,9 @@ cs:
       order:
         one: Zakázka
         other: Zakázky
+      stop:
+        one: Zastávka
+        other: Zastávky
       user:
         one: Uživatel
         other: Uživatelé
@@ -45,6 +48,8 @@ cs:
         bank: 'Banka'
         iban: 'IBAN'
         swift: 'SWIFT'
+        raal: 'Raal'
+        timocom: 'Timocom'
       invoice:
         date_of_issue: 'Datum vydání'
         date_of_taxable_supply: 'Datum zdanitelného plnění'
@@ -80,11 +85,20 @@ cs:
         price_per_km: "Cena za km"
         customer_id: "Zadavatel"
         destination_id: "Cíl cesty"
-        origin_id: "Původ"
+        origin_id: "Začátek cesty"
         user_id: "zadal"
         full_price: "Celková cena bez DPH"
         vat_percentage: "Sazba daně"
         car_id: 'Auto'
+      stop:
+        sequence: 'Pořadí'
+        city: 'Město'
+        country: 'Země'
+        label: 'Název'
+        number: 'Číslo'
+        street: 'Ulice'
+        way_back: 'Nazpátek'
+        zip_code: 'PSČ'
       user:
         admin: 'Admin'
         driver: 'Řidič'

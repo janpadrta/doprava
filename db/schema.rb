@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 19) do
+ActiveRecord::Schema.define(version: 22) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(version: 19) do
     t.string "bank"
     t.string "swift"
     t.string "iban"
+    t.string "raal"
+    t.string "timocom"
+    t.string "country"
   end
 
   create_table "invoice_lines", force: :cascade do |t|
@@ -98,6 +101,22 @@ ActiveRecord::Schema.define(version: 19) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "stops", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.string "type"
+    t.string "label", null: false
+    t.string "street"
+    t.string "number"
+    t.string "zip_code"
+    t.string "city"
+    t.string "country"
+    t.boolean "way_back", default: false
+    t.integer "sequence"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_stops_on_order_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.text "email", null: false
     t.text "crypted_password"
@@ -132,4 +151,5 @@ ActiveRecord::Schema.define(version: 19) do
   add_foreign_key "invoices", "users"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "users"
+  add_foreign_key "stops", "orders"
 end

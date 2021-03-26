@@ -41,6 +41,7 @@ class Order < ApplicationRecord
   belongs_to :destination, foreign_key: :destination_id, class_name: 'Customer'
   has_many :invoices
   belongs_to :car
+  has_many :stops
 
   scope :finished, -> { where(finished: true) }
   scope :active, -> { where(finished: false) }
@@ -49,9 +50,9 @@ class Order < ApplicationRecord
 
   def full_price
     if fix_price?
-      price
+      price || 0.0
     else
-      price_per_km * distance
+      (price_per_km || 0.0) * (distance || 0.0)
     end
   end
 

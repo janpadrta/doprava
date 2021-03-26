@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :invoices
   resources :orders
+  resources :stops
   resources :users
 
   get 'generate_invoice/show'

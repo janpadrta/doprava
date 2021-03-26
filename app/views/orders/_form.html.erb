@@ -21,14 +21,19 @@
       <%= render 'form/select', form: form, column: :origin_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name', @order.origin_id) %>
 
       <%= render 'form/select', form: form, column: :destination_id, options_var: options_from_collection_for_select(Customer.all, 'id', 'name', @order.destination_id) %>
+      <fieldset style="border: black">
+        <legend><%= t('activerecord.attributes.order.fix_price') %></legend>
+        <%= render 'form/check_box', form: form, column: :fix_price %>
 
-      <%= render 'form/check_box', form: form, column: :fix_price %>
+        <%= render 'form/text_field', form: form, column: :price %>
+      </fieldset>
+      <br/>
+      <fieldset>
+        <legend>Cena spočtená ze vzdálenosti a ceny za kilometr</legend>
+        <%= render 'form/text_field', form: form, column: :distance %>
 
-      <%= render 'form/text_field', form: form, column: :distance %>
-
-      <%= render 'form/text_field', form: form, column: :price_per_km %>
-
-      <%= render 'form/text_field', form: form, column: :price %>
+        <%= render 'form/text_field', form: form, column: :price_per_km %>
+      </fieldset>
     </div>
     <div class="col-6">
       <%= render 'form/number_field', form: form, column: :vat_percentage %>
@@ -52,5 +57,74 @@
 
   <div class="actions">
     <%= form.button 'Uložit' %>
+  </div>
+<% end %>
+<% if @order.id.present? %>
+  <hr/>
+  <div class="row">
+    <div class="col-5">
+      <%= form_with(model: @stop, local: true) do |form| %>
+        <% if @stop.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@stop.errors.count, "error") %> prohibited this stop from being saved:</h2>
+
+            <ul>
+              <% @stop.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= form.hidden_field :order_id, value: @order.id %>
+
+        <%= render 'form/text_field', form: form, column: :label %>
+
+        <%= render 'form/text_field', form: form, column: :street %>
+
+        <%= render 'form/text_field', form: form, column: :number %>
+
+        <%= render 'form/text_field', form: form, column: :zip_code %>
+
+        <%= render 'form/text_field', form: form, column: :city %>
+
+        <%= render 'form/text_field', form: form, column: :country %>
+
+        <%= render 'form/check_box', form: form, column: :way_back %>
+
+        <div class="actions">
+          <%= form.button 'Nakládka', value: 'Stop::Loading', name: 'type', class: 'button', type: 'submit' %>
+          <%= form.button 'Vykládka', value: 'Stop::Unloading', name: 'type', class: 'button', type: 'submit' %>
+        </div>
+      <% end %>
+
+    </div>
+    <div class="col-7">
+      <table class="table-sm">
+        <tr>
+          <th><%= t('activerecord.attributes.stop.sequence') %></th>
+          <th><%= t('activerecord.attributes.customer.address') %></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @order.stops.each do |stop| %>
+          <% next if stop.id.blank? %>
+          <tr>
+            <td class="<%= stop_line_style(stop) %>">
+              <%= stop.sequence %>.
+            </td>
+            <td class="<%= stop_line_style(stop) %>">
+              <%= stop.text %>
+            </td>
+            <td class="<%= stop_line_style(stop) %>">
+              <%= stop.way_back ? 'Zpáteční' : '' %>
+            </td>
+            <td class="<%= stop_line_style(stop) %>">
+              <%= link_to fa_icon('edit 2x'), edit_stop_path(stop) %>
+              <%= link_to fa_icon('trash 2x'), stop_path(stop), method: :delete, data: { confirm: 'Opravdu odstranit?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 <% end %>

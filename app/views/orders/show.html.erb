@@ -110,3 +110,33 @@
     <%= link_to fa_icon('file-alt 2x', text: "Vytvoř fakturu", left: true), controller: :invoices, action: :new, order_id: @order.id %>
   </div>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<table class="table-sm">
+  <tr>
+    <th><%= t('activerecord.attributes.stop.sequence') %></th>
+    <th><%= t('activerecord.attributes.customer.address') %></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @order.stops.each do |stop| %>
+    <% next if stop.id.blank? %>
+    <tr>
+      <td class="<%= stop_line_style(stop) %>">
+        <%= stop.sequence %>.
+      </td>
+      <td class="<%= stop_line_style(stop) %>">
+        <%= stop.text %>
+      </td>
+      <td class="<%= stop_line_style(stop) %>">
+        <%= stop.way_back ? 'Zpáteční' : '' %>
+      </td>
+      <td class="<%= stop_line_style(stop) %>">
+        <%= link_to fa_icon('edit 2x'), edit_stop_path(stop) %>
+        <%= link_to fa_icon('trash 2x'), stop_path(stop), method: :delete, data: { confirm: 'Opravdu odstranit?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
