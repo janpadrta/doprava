@@ -29,6 +29,9 @@ class Stop < ApplicationRecord
 
   before_create :set_sequence
 
+  scope :forward, -> { where(way_back: false) }
+  scope :back, -> { where(way_back: true) }
+
   def text
     "#{label}, #{street} #{number}, #{zip_code} #{city}, #{country}"
   end

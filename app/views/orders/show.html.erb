@@ -108,6 +108,8 @@
     <%= link_to fa_icon('list 2x', text: "Přehled zakázek", left: true), orders_path %>
     <br/>
     <%= link_to fa_icon('file-alt 2x', text: "Vytvoř fakturu", left: true), controller: :invoices, action: :new, order_id: @order.id %>
+    <br/>
+    <%= link_to fa_icon('file-pdf 2x', text: "Vytvoř smlouvu PDF", left: true), generate_contract_show_path(order_id: @order.id, format: :pdf), target: :blank %>
   </div>
 </div>
 <br/>

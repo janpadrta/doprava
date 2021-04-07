@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'generate_invoice/show'
+  get 'generate_contract/show'
 
   get 'login' => 'user_sessions#new', as: :login
   post 'login' => 'user_sessions#create'

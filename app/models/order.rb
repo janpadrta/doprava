@@ -42,6 +42,8 @@ class Order < ApplicationRecord
   has_many :invoices
   belongs_to :car
   has_many :stops
+  has_many :stop_loadings, class_name: 'Stop::Loading'
+  has_many :stop_unloadings, class_name: 'Stop::Unloading'
 
   scope :finished, -> { where(finished: true) }
   scope :active, -> { where(finished: false) }

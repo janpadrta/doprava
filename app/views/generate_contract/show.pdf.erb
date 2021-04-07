@@ -1,0 +1,141 @@
+<table>
+  <tr>
+    <td><b>Objednatel:</b></td>
+    <td><%= @order.customer.name %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= @order.customer.street_w_number %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= @order.customer.psc_w_city %></td>
+  </tr>
+  <tr>
+    <td><b>Tel:</b></td>
+    <td><%= @order.customer.phone %></td>
+  </tr>
+  <tr>
+    <td><b>Timocom:</b></td>
+    <td><%= @order.customer.timocom %></td>
+  </tr>
+  <tr>
+    <td><b>Raal:</b></td>
+    <td><%= @order.customer.raal %></td>
+  </tr>
+  <tr>
+    <td><b>Email:</b></td>
+    <td><%= @order.customer.email %></td>
+  </tr>
+  <tr>
+    <td><b>IČ:</b></td>
+    <td><%= @order.customer.ic %></td>
+  </tr>
+  <tr>
+    <td><b>DIČ:</b></td>
+    <td><%= @order.customer.dic %></td>
+  </tr>
+</table>
+<br/>
+<table style="align-self: center; width: 100%;">
+  <tr>
+    <td style="font-weight: bold; font-size: 25px; text-align: center; border: 1px solid black;">
+      UZAVÍRÁ SMLOUVU O PŘEPRAVĚ VĚCÍ
+    </td>
+  </tr>
+  <tr>
+    <td style="font-size: 14px; text-align: center;">
+      podle § 2555 a násl. Občanského zákoníku č.89/2012 Sb. uzavřená mezi odesílatelem a dopravcem:
+    </td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; font-size: 25px; text-align: center;">
+      Objednávka č. <%= @order.label %>
+    </td>
+  </tr>
+</table>
+<br/>
+<table style="width: 100%; border: solid 1px black;">
+  <tr>
+    <td style="font-weight: bold; border: solid 1px;" width="50%">Dopravce: <%= @jhtrans.name %></td>
+    <td style="font-weight: bold; border: solid 1px;">Tel: <%= @jhtrans.phone %></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; border: solid 1px;">IČ: <%= @jhtrans.ic %></td>
+    <td style="font-weight: bold; border: solid 1px;">Email: <%= @jhtrans.email %></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold; border: solid 1px;">Raal: <%= @jhtrans.raal %></td>
+    <td style="font-weight: bold; border: solid 1px;">SPZ: <%= @order.car.spz %></td>
+  </tr>
+</table>
+<br/>
+<table style="width: 100%; border: solid 1px black; padding-left: 20px;">
+  <tr>
+    <td width="15%" rowspan="2" style="border: solid 1px black; padding-left: 20px;"><b>Nakládka:</b></td>
+    <td>
+      <% i = 0 %>
+      <% @order.stop_loadings.forward.each do |stop| %>
+        <% i += 1 %>
+        Nakládka č. <%= i %> <%= stop.text %><br/>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <% i = 0 %>
+      <% @order.stop_loadings.back.each do |stop| %>
+        <% i += 1 %>
+        Nakládka zpět č. <%= i %> <%= stop.text %><br/>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td style="border: solid 1px black;"><b>Poznámky:</b></td>
+    <td style="border: solid 1px black;"><%= format_currency @order.distance, 'km' %></td>
+  </tr>
+  <tr>
+    <td width="15%" rowspan="2" style="border: solid 1px black;"><b>Vykládka:</b></td>
+    <td>
+      <% i = 0 %>
+      <% @order.stop_unloadings.forward.each do |stop| %>
+        <% i += 1 %>
+        Vykládka č. <%= i %> <%= stop.text %><br/>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <% i = 0 %>
+      <% @order.stop_unloadings.back.each do |stop| %>
+        <% i += 1 %>
+        Vykládka zpět č. <%= i %> <%= stop.text %><br/>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<br/>
+<p style="font-size: 25px; font-style: italic; text-underline: black;">Cena za Přepravu: <%= format_currency @order.price_with_vat, @order.currency %></p>
+<br/>
+<br/>
+<br/>
+<p style="font-size: 25px;">SLOUVA O PŘEPRAVĚ VĚCÍ</p>
+<p>1. Dopravce se zavazuje, že přepraví zboží z místa odeslání do místa určení dle pokynu odesilatele s odbornou péčí a ve lhůtě stanovené odesilatelem.</p>
+<p>2. Dopravce odpovídá za škodu na zboží, jež vznikla od okamžiku převzetí zboží dopravcem a až do okamžiku převzetí příjemcem.</p>
+<p>3. Při ztrátě nebo zničení zásilky je dopravce povinen nahradit škodu v plné výši.</p>
+<p>4. Pro případy uvedené v předchozích odstavcích dopravce prohlašuje, že je pojištěn tak, aby mohla být případná škoda pokryta.</p>
+<p>5. Dopravce je povinen zajistit řádné potvrzení dodacích listů a CMR razítkem, datem vykládky, čitelným jménem, a podpisem odběratele.</p>
+<p>6. Dopravce se zavazuje, že bude dodržovat optimální trasy přeprav.</p>
+<p>7. Přeprava bude uhrazena do 70 dnů po obdržení faktury a potvrzených dokladů. Dopravce je povinen doručit objednateli fakturu spolu s požadovanými řádně potvrzenými doklady do 10 dnů od ukončení přepravy. V případě nedodržení této lhůty je automaticky udělena pokuta 20 Euro z přepravného a pokud nebude následně do dalších 25 dnů doručeno bude cena snížena až o 85% ceny přepravného.</p>
+<p>8. Fakturu společně s CMR a DL zasílejte na <b>doručovací adresu</b>.</p>
+<p>9. <b>Fakturujeme pouze na základě originálních dokumentů</b> TZN. Splatnost faktury začíná v den kdy nám doručí originální dokumenty.</p>
+<p>10. V ceně přepravného je zahrnuto 24 hodin čekání na nakládce a vykládce.</p>
+<p>11. Pokud nebude ze strany dopravce dodrženo výše sjednané, vyhrazujeme si právo snížení ceny přepravného.</p>
+<p>12. Přísný zákaz přeprodávání pod pokutou 50% přepraveného.</p>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<p>....................................</p>
+<p>Podpis a razítko dopravce</p>

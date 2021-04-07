@@ -34,7 +34,15 @@ class Customer < ApplicationRecord
   after_initialize :default_values
 
   def address
-    "#{street} #{number}, #{psc} #{city}, #{country&.upcase}"
+    "#{street_w_number}, #{psc_w_city}, #{country&.upcase}"
+  end
+
+  def street_w_number
+    "#{street} #{number}"
+  end
+
+  def psc_w_city
+    "#{psc} #{city}"
   end
 
   private
