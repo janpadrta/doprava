@@ -6,4 +6,8 @@ module OrdersHelper
     return 'back_unloading' if stop.class == Stop::Unloading && stop.way_back
     ''
   end
+
+  def crossed?(order)
+    order.finished ? 'crossed' : ''
+  end
 end

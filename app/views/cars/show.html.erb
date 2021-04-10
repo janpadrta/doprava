@@ -1,19 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @car.name %>
+<p style="font-size: xx-large;">
+  <strong>Označení: <%= @car.name %></strong>
+</p>
+
+<p style="font-size: x-large">
+  <strong>SPZ: <%= @car.spz %></strong>
 </p>
 
 <p>
-  <strong>Spz:</strong>
-  <%= @car.spz %>
+  <strong>Aktivní:</strong>
+  <%= ano_ne @car.active %>
 </p>
+<br/>
+<br/>
+<table class="table-sm">
+  <% @orders.each do |order| %>
+    <tr class="<%= crossed?(order) %>">
+      <td><%= link_to order.label, order %></td>
+      <td><%= format_currency order.price_with_vat, order.currency %></td>
+    </tr>
+  <% end %>
+</table>
 
-<p>
-  <strong>Active:</strong>
-  <%= @car.active %>
-</p>
-
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>
+<%= link_to fa_icon('edit 2x'), edit_car_path(@car) %> |
+<%= link_to 'Seznam aut', cars_path %>
